@@ -5,6 +5,8 @@ import resolutions from '../data/example.json'
 function Inputs() {
   const ratio = window.devicePixelRatio || 1
 
+  let estimatedScreenSizes: number[] = []
+
   const calculateInitialValues = () => {
     const initialResolution = {
       horizontal: ratio * screen.width,
@@ -12,7 +14,8 @@ function Inputs() {
     }
 
     const diagonalInches = Math.sqrt((initialResolution.horizontal / 96) ** 2 + (initialResolution.vertical / 96) ** 2)
-    const estimatedScreenSize = getScreenSize(resolutions, initialResolution.horizontal, initialResolution.vertical)
+    estimatedScreenSizes = getScreenSize(resolutions, initialResolution.horizontal, initialResolution.vertical)
+    const estimatedScreenSize = estimatedScreenSizes[0]
 
     const initialDiagonal = estimatedScreenSize || diagonalInches
     const initialPixelPerInch = estimatedScreenSize ? calculatePixelDensity(initialResolution.horizontal, initialResolution.vertical, estimatedScreenSize) : 96
@@ -29,19 +32,19 @@ function Inputs() {
   // console.log(`screen ${screen.orientation.type}`)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, dimension: 'horizontal' | 'vertical' | 'diagonal') => {
-    const value = Number(e.target.value);
+    const value = Number(e.target.value)
     if (dimension === 'horizontal' || dimension === 'vertical') {
       setResolution(prev => {
         const newResolution = {
           ...prev,
           [dimension]: value // Update the specific dimension
-        };
-        setPixelPerInch(calculatePixelDensity(newResolution.horizontal, newResolution.vertical, diagonal));
-        return newResolution;
-      });
+        }
+        setPixelPerInch(calculatePixelDensity(newResolution.horizontal, newResolution.vertical, diagonal))
+        return newResolution
+      })
     } else {
-      setDiagonal(value); // Set diagonal directly
-      setPixelPerInch(calculatePixelDensity(resolution.horizontal, resolution.vertical, value));
+      setDiagonal(value) // Set diagonal directly
+      setPixelPerInch(calculatePixelDensity(resolution.horizontal, resolution.vertical, value))
     }
   }
 
@@ -96,7 +99,24 @@ function Inputs() {
           Pixel density: {pixelPerInch}
         </div>
         <div>
-          Aspect ratio: tbd
+          {estimatedScreenSizes.length > 1 ? (
+            <>Is your screen size {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
+              <span key={index}>
+                <span
+                  onClick={() => {
+                    setDiagonal(alternateScreenSize)
+                    setPixelPerInch(calculatePixelDensity(resolution.horizontal, resolution.vertical, alternateScreenSize))
+                  }}
+                  className="text-blue-600 cursor-pointer underline"
+                >
+                  {alternateScreenSize}
+                </span>
+                {index < estimatedScreenSizes.length - 2 ? ', ' : ''}
+              </span>
+            ))}?</>
+          ) : (
+            <>Your resolution is unique.</>
+          )}
         </div>
       </div>
     </div>
