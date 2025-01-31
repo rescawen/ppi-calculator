@@ -8,13 +8,13 @@ export interface Resolution {
 }
 
 // get the most likely screen size based on resolution
-export const getScreenSize = (resolutions: Resolution[], horizontal: number, vertical: number): number | null => {
+export const getScreenSize = (resolutions: Resolution[], horizontal: number, vertical: number): number[] => {
     const matchedResolution = resolutions.find(resolution => 
         resolution["horizontalResolution"] === horizontal && 
         resolution["verticalResolution"] === vertical
     )
 
-    return matchedResolution ? matchedResolution["screenSizes"][0] : null // Return the first screen size or null if no match
+    return matchedResolution ? matchedResolution["screenSizes"] : [] // Return the first screen size or null if no match
 }
 
 export const roundToTwoDecimals = (value: number): number => parseFloat(value.toFixed(2))
