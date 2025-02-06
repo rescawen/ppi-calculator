@@ -1,6 +1,5 @@
 import resolutions from '../data/example.json'
 
-
 interface DisplayDataState {
     resolution: { horizontal: number; vertical: number }
     diagonal: number

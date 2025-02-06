@@ -1,7 +1,8 @@
+import type { Dispatch } from 'react'
 import { borderClasses } from '../utils/utils'
 import { DisplayDataState, Action, estimatedScreenSizes } from '../reducers/displayDataReducer'
 
-function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; dispatch: React.Dispatch<Action> }) {
+function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; dispatch: Dispatch<Action> }) {
 
     // console.log(`screen ${screen.orientation.type}`)
 
@@ -10,11 +11,11 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
         if (dimension === 'horizontal' || dimension === 'vertical') {
             const newResolution = {
                 ...displayData.resolution,
-                [dimension]: value // Update the specific dimension
+                [dimension]: value
             }
             dispatch({ type: 'SET_RESOLUTION', payload: newResolution })
         } else {
-            dispatch({ type: 'SET_DIAGONAL', payload: value }) // Set diagonal directly
+            dispatch({ type: 'SET_DIAGONAL', payload: value })
         }
     };
 
@@ -31,7 +32,7 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
                         value={displayData.resolution.horizontal}
                         onChange={(e) => handleChange(e, 'horizontal')}
                     />
-                    <span>{`${displayData.resolution.horizontal}`}pixels</span>
+                    <span>pixels</span>
                 </div>
 
                 <div className="col-span-4">
@@ -66,7 +67,7 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
                     Total pixels: {displayData.resolution.horizontal * displayData.resolution.vertical}
                 </div>
                 <div>
-                    Pixel density: {displayData.pixelPerInch}
+                    Pixel density: <span className="font-semibold text-rose-700">{displayData.pixelPerInch}</span>
                 </div>
                 <div>
                     {estimatedScreenSizes.length > 1 ? (

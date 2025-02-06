@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import Inputs from './components/Inputs'
-import Container from './components/Container'
+import Container from './components/ResolutionBlocks'
 import { displayDataReducer, initialDisplayDataState } from '../src/reducers/displayDataReducer'
 
 function App() {
