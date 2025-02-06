@@ -1,0 +1,202 @@
+[
+    {
+        "brand": "Apple",
+        "devices": [
+            { 
+                "resolution": { "horizontal": 272, "vertical": 340 },
+                "diagonal": 1.337, 
+                "label": "Apple Watch 38mm"
+            },
+            { 
+                "resolution": { "horizontal": 312, "vertical": 390 }, 
+                "diagonal": 1.534, 
+                "label": "Apple Watch 42mm" 
+            },
+            { 
+                "resolution": { "horizontal": 368, "vertical": 448 }, 
+                "diagonal": 1.757, 
+                "label": "Apple Watch 44mm" 
+            },
+            {
+                "resolution": { "horizontal": 320, "vertical": 480 },
+                "diagonal": 3.5,
+                "label": "iPhone"
+            },
+            {
+                "resolution": { "horizontal": 640, "vertical": 960 },
+                "diagonal": 3.5,
+                "label": "iPhone 4"
+            },
+                        {
+                "resolution": { "horizontal": 640, "vertical": 1136 },
+                "diagonal": 4,
+                "label": "iPhone 5"
+            },
+            {
+                "resolution": { "horizontal": 2560, "vertical": 1600 },
+                "diagonal": 13.3,
+                "label": "MacBook Pro 13\""
+            },
+            {
+                "resolution": { "horizontal": 3024, "vertical": 1964 },
+                "diagonal": 14.2,
+                "label": "MacBook Pro 14\""
+            },
+            {
+                "resolution": { "horizontal": 3456, "vertical": 2234 },
+                "diagonal": 16,
+                "label": "MacBook Pro 16\""
+            },
+            {
+                "resolution": { "horizontal": 2560, "vertical": 1664 },
+                "diagonal": 13.6,
+                "label": "MacBook Air M2"
+            },
+            {
+                "resolution": { "horizontal": 2880, "vertical": 1864 },
+                "diagonal": 15.3,
+                "label": "MacBook Air 15\""
+            },
+            {
+                "resolution": { "horizontal": 4480, "vertical": 2520 },
+                "diagonal": 24,
+                "label": "iMac 24\""
+            },
+            {
+                "resolution": { "horizontal": 5120, "vertical": 2880 },
+                "diagonal": 27,
+                "label": "Apple Studio Display"
+            },
+            {
+                "resolution": { "horizontal": 6016, "vertical": 3384 },
+                "diagonal": 32,
+                "label": "Pro Display XDR"
+            }
+        ]
+    },
+    {
+        "brand": "Dell",
+        "devices": [
+            {
+                "resolution": { "horizontal": 1920, "vertical": 1080 },
+                "diagonal": 21.5,
+                "label": "Dell P2219H"
+            },
+            {
+                "resolution": { "horizontal": 1920, "vertical": 1080 },
+                "diagonal": 23,
+                "label": "Dell P2319H"
+            },
+            {
+                "resolution": { "horizontal": 1920, "vertical": 1080 },
+                "diagonal": 24,
+                "label": "Dell P2419H"
+            },
+            {
+                "resolution": { "horizontal": 2560, "vertical": 1440 },
+                "diagonal": 27,
+                "label": "Dell U2719D"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 27,
+                "label": "Dell U2720Q"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 32,
+                "label": "Dell U3219Q"
+            }
+        ]
+    },
+    {
+        "brand": "Samsung",
+        "devices": [
+            {
+                "resolution": { "horizontal": 3440, "vertical": 1440 },
+                "diagonal": 34,
+                "label": "S34J550"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 28,
+                "label": "U28R550"
+            },
+            {
+                "resolution": { "horizontal": 5120, "vertical": 1440 },
+                "diagonal": 49,
+                "label": "C49RG9"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 43,
+                "label": "Smart Monitor M7"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 65,
+                "label": "QN65Q80B"
+            },
+            {
+                "resolution": { "horizontal": 7680, "vertical": 4320 },
+                "diagonal": 75,
+                "label": "QN75QN900B"
+            }
+        ]
+    },
+    {
+        "brand": "LG",
+        "devices": [
+            {
+                "resolution": { "horizontal": 2560, "vertical": 1440 },
+                "diagonal": 27,
+                "label": "LG 27GL850"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 27,
+                "label": "LG 27UP850"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 1600 },
+                "diagonal": 38,
+                "label": "LG 38WN95C"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 42,
+                "label": "LG OLED42C2"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 65,
+                "label": "LG OLED65C2"
+            }
+        ]
+    },
+    {
+        "brand": "ASUS",
+        "devices": [
+            {
+                "resolution": { "horizontal": 1920, "vertical": 1080 },
+                "diagonal": 24,
+                "label": "VG248QE"
+            },
+            {
+                "resolution": { "horizontal": 2560, "vertical": 1440 },
+                "diagonal": 27,
+                "label": "TUF Gaming VG27AQ"
+            },
+            {
+                "resolution": { "horizontal": 3840, "vertical": 2160 },
+                "diagonal": 28,
+                "label": "TUF Gaming VG28UQL1A"
+            },
+            {
+                "resolution": { "horizontal": 3440, "vertical": 1440 },
+                "diagonal": 34,
+                "label": "ROG Swift PG349Q"
+            }
+        ]
+    }
+]
