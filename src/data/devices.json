@@ -305,6 +305,81 @@
         ]
     },
     {
+      "brand": "Nintendo",
+      "devices": [
+         {
+            "resolution": { "horizontal": 240, "vertical": 160 },
+            "diagonal": 2.9,
+            "label": "Game Boy Advance"
+         },
+         {
+            "resolution": { "horizontal": 1280, "vertical": 720 },
+            "diagonal": 6.2,
+            "label": "Nintendo Switch"
+         },
+         {
+            "resolution": { "horizontal": 1280, "vertical": 720 },
+            "diagonal": 5.5,
+            "label": "Nintendo Switch Lite"
+         },
+         {
+            "resolution": { "horizontal": 1280, "vertical": 720 },
+            "diagonal": 7,
+            "label": "Nintendo Switch OLED"
+         }
+      ]
+    },
+    {
+      "brand": "Sony",
+      "devices": [
+         {
+            "resolution": { "horizontal": 480, "vertical": 272 },
+            "diagonal": 4.3,
+            "label": "PlayStation Portable"
+         },
+         {
+            "resolution": { "horizontal": 960, "vertical": 544 },
+            "diagonal": 5,
+            "label": "PlayStation Vita"
+         }
+      ]
+    },
+    {
+      "brand": "Nokia",
+      "devices": [
+         {
+            "resolution": { "horizontal": 240, "vertical": 320 },
+            "diagonal": 2.6,
+            "label": "Nokia N95"
+         },
+         {
+            "resolution": { "horizontal": 360, "vertical": 640 },
+            "diagonal": 3.2,
+            "label": "5800 XpressMusic"
+         },
+         {
+            "resolution": { "horizontal": 360, "vertical": 640 },
+            "diagonal": 3.5,
+            "label": "Nokia N8"
+         },
+         {
+            "resolution": { "horizontal": 640, "vertical": 360 },
+            "diagonal": 4,
+            "label": "Nokia E7"
+         },
+         {
+            "resolution": { "horizontal": 800, "vertical": 480 },
+            "diagonal": 3.5,
+            "label": "Nokia N900"
+         },
+         {
+            "resolution": { "horizontal": 480, "vertical": 854 },
+            "diagonal": 3.9,
+            "label": "Nokia N9"
+         }
+      ]
+    },
+    {
         "brand": "Dell",
         "devices": [
             {
@@ -378,14 +453,19 @@
         "brand": "LG",
         "devices": [
             {
-                "resolution": { "horizontal": 2560, "vertical": 1440 },
-                "diagonal": 27,
-                "label": "LG 27GL850"
+               "resolution": { "horizontal": 2880, "vertical": 2560 },
+               "diagonal": 27.6,
+               "label": "LG 28MQ780-B"
+            }, 
+            {
+               "resolution": { "horizontal": 4096, "vertical": 2304 },
+               "diagonal": 21.5,
+               "label": "LG 22MD4KA"
             },
             {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 27,
-                "label": "LG 27UP850"
+                "resolution": { "horizontal": 5120, "vertical": 2160 },
+                "diagonal": 34,
+                "label": "LG 34WK95U"
             },
             {
                 "resolution": { "horizontal": 3840, "vertical": 1600 },
@@ -403,6 +483,16 @@
                 "label": "LG OLED65C2"
             }
         ]
+    },
+    {
+      "brand": "Acer ",
+      "devices": [
+         {
+            "resolution": { "horizontal": 5120, "vertical": 2880 },
+            "diagonal": 31.5,
+            "label": "Predator XB323QX"
+        }
+      ]
     },
     {
         "brand": "ASUS",
@@ -428,5 +518,70 @@
                 "label": "ROG Swift PG349Q"
             }
         ]
+    },
+    {
+      "brand": "BenQ",
+      "devices": [
+         {
+            "resolution": { "horizontal": 3840, "vertical": 2560 },
+            "diagonal": 28.2,
+            "label": "RD280U"
+        }
+      ]
+    },
+    {
+      "brand": "Microsoft",
+      "devices": [
+         {
+            "resolution": { "horizontal": 1920, "vertical": 1080 },
+            "diagonal": 10.6,
+            "label": "Surface Pro"
+         },
+         {
+            "resolution": { "horizontal": 2160, "vertical": 1440 },
+            "diagonal": 12,
+            "label": "Surface Pro 3"
+         },
+         {
+            "resolution": { "horizontal": 2736, "vertical": 1824 },
+            "diagonal": 12.3,
+            "label": "Surface Pro 4"
+         },
+         {
+            "resolution": { "horizontal": 2880, "vertical": 1920 },
+            "diagonal": 13,
+            "label": "Surface Pro 8"
+         },
+         {
+            "resolution": { "horizontal": 4500, "vertical": 3000 },
+            "diagonal": 28,
+            "label": "Surface Studio"
+         }
+      ]
+    },
+    {
+      "brand": "Lenovo",
+      "devices": [
+         {
+            "resolution": { "horizontal": 2880, "vertical": 1800 },
+            "diagonal": 14,
+            "label": "Lenovo X1 Carbon"
+         }
+      ]
+    },
+    {
+      "brand": "Valve",
+      "devices": [
+         {
+            "resolution": { "horizontal": 1280, "vertical": 800 },
+            "diagonal": 7,
+            "label": "Steam Deck"
+         },
+         {
+            "resolution": { "horizontal": 1280, "vertical": 800 },
+            "diagonal": 7.4,
+            "label": "Steam Deck OLED"
+         }
+      ]
     }
 ]
