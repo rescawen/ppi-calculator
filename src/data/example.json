@@ -1,17 +1,5 @@
 [
-    {
-        "horizontalResolution": 1920,
-        "verticalResolution": 1080,
-        "screenSizes": [24.5, 25, 23.7]
-    },
-    {
-        "horizontalResolution": 2560,
-        "verticalResolution": 1440,
-        "screenSizes": [27, 26.5, 16]
-    },
-    {
-        "horizontalResolution": 2560,
-        "verticalResolution": 2880,
-        "screenSizes": [27.6, 28]
-    }
+  { "horizontalResolution": 1920, "verticalResolution": 1080, "screenSizes": [24.5, 25, 23.7] },
+  { "horizontalResolution": 2560, "verticalResolution": 1440, "screenSizes": [27, 26.5, 16] },
+  { "horizontalResolution": 2560, "verticalResolution": 2880, "screenSizes": [27.6, 28] }
 ]

@@ -1,7 +1,7 @@
-import { useReducer } from 'react'
-import Inputs from './components/Inputs'
-import Container from './components/ResolutionBlocks'
-import { displayDataReducer, initialDisplayDataState } from '../src/reducers/displayDataReducer'
+import { useReducer } from "react"
+import Inputs from "./components/Inputs"
+import Container from "./components/ResolutionBlocks"
+import { displayDataReducer, initialDisplayDataState } from "../src/reducers/displayDataReducer"
 
 function App() {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)

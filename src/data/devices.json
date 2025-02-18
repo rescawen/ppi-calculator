@@ -1,587 +1,171 @@
 [
-    {
-        "brand": "Apple",
-        "devices": [
-            { 
-                "resolution": { "horizontal": 272, "vertical": 340 },
-                "diagonal": 1.337, 
-                "label": "Apple Watch 38mm"
-            },
-            { 
-                "resolution": { "horizontal": 312, "vertical": 390 }, 
-                "diagonal": 1.534, 
-                "label": "Apple Watch 42mm" 
-            },
-            { 
-               "resolution": { "horizontal": 324, "vertical": 394 }, 
-               "diagonal": 1.549, 
-               "label": "Apple Watch (4) 40mm" 
-            },
-            { 
-                "resolution": { "horizontal": 368, "vertical": 448 }, 
-                "diagonal": 1.757, 
-                "label": "Apple Watch (4) 44mm" 
-            },
-            { 
-               "resolution": { "horizontal": 352, "vertical": 430 }, 
-               "diagonal": 1.691, 
-               "label": "Apple Watch (7) 41mm" 
-            },
-            { 
-                "resolution": { "horizontal": 396, "vertical": 484 }, 
-                "diagonal": 1.901, 
-                "label": "Apple Watch (7) 45mm" 
-            },
-            { 
-               "resolution": { "horizontal": 410, "vertical": 502 }, 
-               "diagonal": 1.936, 
-               "label": "Apple Watch Ultra" 
-            },
-            { 
-               "resolution": { "horizontal": 374, "vertical": 446 }, 
-               "diagonal": 1.765, 
-               "label": "Apple Watch (10) 42mm" 
-            },
-            { 
-                "resolution": { "horizontal": 416, "vertical": 496 }, 
-                "diagonal": 1.960, 
-                "label": "Apple Watch (10) 46mm" 
-            },
-            {
-                "resolution": { "horizontal": 320, "vertical": 480 },
-                "diagonal": 3.5,
-                "label": "iPhone"
-            },
-            {
-                "resolution": { "horizontal": 640, "vertical": 960 },
-                "diagonal": 3.5,
-                "label": "iPhone 4"
-            },
-            {
-                "resolution": { "horizontal": 640, "vertical": 1136 },
-                "diagonal": 4,
-                "label": "iPhone 5"
-            },
-            {
-               "resolution": { "horizontal": 750, "vertical": 1334 },
-               "diagonal": 4.7,
-               "label": "iPhone 6"
-            },
-            {
-               "resolution": { "horizontal": 1080, "vertical": 1920 },
-               "diagonal": 5.5,
-               "label": "iPhone 6 Plus"
-            },
-            {
-               "resolution": { "horizontal": 1125, "vertical": 2436 },
-               "diagonal": 5.8,
-               "label": "iPhone X"
-            },
-            {
-               "resolution": { "horizontal": 828, "vertical": 1792 },
-               "diagonal": 6.1,
-               "label": "iPhone XR"
-            },
-            {
-               "resolution": { "horizontal": 1242, "vertical": 2688 },
-               "diagonal": 6.5,
-               "label": "iPhone XS Max"
-            },
-            {
-               "resolution": { "horizontal": 1080, "vertical": 2340 },
-               "diagonal": 5.4,
-               "label": "iPhone 12 mini"
-            },
-            {
-               "resolution": { "horizontal": 1170, "vertical": 2532 },
-               "diagonal": 6.1,
-               "label": "iPhone 12"
-            },
-            {
-               "resolution": { "horizontal": 1284, "vertical": 2778 },
-               "diagonal": 6.7,
-               "label": "iPhone 12 Pro Max"
-            },
-            {
-               "resolution": { "horizontal": 1179, "vertical": 2556 },
-               "diagonal": 6.1,
-               "label": "iPhone 14 Pro"
-            },
-            {
-               "resolution": { "horizontal": 1290, "vertical": 2796 },
-               "diagonal": 6.7,
-               "label": "iPhone 14 Pro Max"
-            },
-            {
-               "resolution": { "horizontal": 1206, "vertical": 2622 },
-               "diagonal": 6.3,
-               "label": "iPhone 16 Pro"
-            },
-            {
-               "resolution": { "horizontal": 1320, "vertical": 2868 },
-               "diagonal": 6.9,
-               "label": "iPhone 16 Pro Max"
-            },
-            {
-               "resolution": { "horizontal": 768, "vertical": 1024 },
-               "diagonal": 9.7,
-               "label": "iPad"
-            },
-            {
-               "resolution": { "horizontal": 1536, "vertical": 2048 },
-               "diagonal": 9.7,
-               "label": "iPad (3rd Generation)"
-            },
-            {
-               "resolution": { "horizontal": 768, "vertical": 1024 },
-               "diagonal": 7.9,
-               "label": "iPad mini"
-            },
-            {
-               "resolution": { "horizontal": 1536, "vertical": 2048 },
-               "diagonal": 7.9,
-               "label": "iPad mini 2"
-            },
-            {
-               "resolution": { "horizontal": 2048, "vertical": 2732 },
-               "diagonal": 12.9,
-               "label": "iPad Pro"
-            },
-            {
-               "resolution": { "horizontal": 1668, "vertical": 2224 },
-               "diagonal": 10.5,
-               "label": "iPad Pro (2017)"
-            },
-            {
-               "resolution": { "horizontal": 1668, "vertical": 2388 },
-               "diagonal": 11,
-               "label": "iPad Pro (2018)"
-            },
-            {
-               "resolution": { "horizontal": 1620, "vertical": 2160 },
-               "diagonal": 10.2,
-               "label": "iPad (7th Generation)"
-            },
-            {
-               "resolution": { "horizontal": 1640, "vertical": 2360 },
-               "diagonal": 10.9,
-               "label": "iPad Air (2020)"
-            },
-            {
-               "resolution": { "horizontal": 1488, "vertical": 2266 },
-               "diagonal": 8.3,
-               "label": "iPad Mini (2021)"
-            },
-            {
-               "resolution": { "horizontal": 2360, "vertical":  1640 },
-               "diagonal": 11,
-               "label": "iPad Air 11 (2024)"
-            },
-            {
-               "resolution": { "horizontal": 2732, "vertical": 2048 },
-               "diagonal": 13,
-               "label": "iPad Air 13 (2024)"
-            },
-            {
-               "resolution": { "horizontal": 2420, "vertical":  1668 },
-               "diagonal": 11,
-               "label": "iPad Pro 11 (2024)"
-            },
-            {
-               "resolution": { "horizontal": 2752, "vertical": 2064 },
-               "diagonal": 13,
-               "label": "iPad Pro 13 (2024)"
-            },
-            {
-               "resolution": { "horizontal": 1280, "vertical": 800 },
-               "diagonal": 13.3,
-               "label": "MacBook (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1440, "vertical": 900 },
-               "diagonal": 15.4,
-               "label": "MacBook Pro 15 (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1680, "vertical": 1050 },
-               "diagonal": 17,
-               "label": "MacBook Pro 17 (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1920, "vertical": 1200 },
-               "diagonal": 17,
-               "label": "MacBook Pro 17 (2009)"
-            },
-            {
-                "resolution": { "horizontal": 2560, "vertical": 1600 },
-                "diagonal": 13.3,
-                "label": "MacBook Pro 13 (2012)"
-            },
-            {
-               "resolution": { "horizontal": 2880, "vertical": 1800 },
-               "diagonal": 15.4,
-               "label": "MacBook Pro 15 (2012)"
-            },
-            {
-               "resolution": { "horizontal": 2304, "vertical": 1440 },
-               "diagonal": 12,
-               "label": "MacBook 12 (2015)"
-            },
-            {
-               "resolution": { "horizontal": 3072, "vertical": 1920 },
-               "diagonal": 16,
-               "label": "MacBook Pro 16 (2019)"
-            },
-            {
-                "resolution": { "horizontal": 3024, "vertical": 1964 },
-                "diagonal": 14.2,
-                "label": "MacBook Pro 14 (2021)"
-            },
-            {
-                "resolution": { "horizontal": 3456, "vertical": 2234 },
-                "diagonal": 16.2,
-                "label": "MacBook Pro 16 (2021)"
-            },
-            {
-                "resolution": { "horizontal": 2560, "vertical": 1664 },
-                "diagonal": 13.6,
-                "label": "MacBook Air 13 (2022)"
-            },
-            {
-                "resolution": { "horizontal": 2880, "vertical": 1864 },
-                "diagonal": 15.3,
-                "label": "MacBook Air 15 (2023)"
-            },
-            {
-               "resolution": { "horizontal": 1440, "vertical": 900 },
-               "diagonal": 17,
-               "label": "iMac 17 (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1680, "vertical": 1050 },
-               "diagonal": 20,
-               "label": "iMac 20 (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1920, "vertical": 1200 },
-               "diagonal": 24,
-               "label": "iMac 24 (2006)"
-            },
-            {
-               "resolution": { "horizontal": 1920, "vertical": 1080 },
-               "diagonal": 21.5,
-               "label": "iMac 21 (2009)"
-            },
-            {
-               "resolution": { "horizontal": 2560, "vertical": 1440 },
-               "diagonal": 27,
-               "label": "iMac 27 (2009)"
-            },
-            {
-               "resolution": { "horizontal": 5120, "vertical": 2880 },
-               "diagonal": 27,
-               "label": "iMac 27 (2014)"
-            },
-            {
-               "resolution": { "horizontal": 4096, "vertical": 2304 },
-               "diagonal": 21.5,
-               "label": "iMac 21 (2015)"
-            },
-            {
-                "resolution": { "horizontal": 4480, "vertical": 2520 },
-                "diagonal": 23.5,
-                "label": "iMac 24 (2021)"
-            },
-            {
-                "resolution": { "horizontal": 5120, "vertical": 2880 },
-                "diagonal": 27,
-                "label": "Apple Studio Display"
-            },
-            {
-                "resolution": { "horizontal": 6016, "vertical": 3384 },
-                "diagonal": 32,
-                "label": "Pro Display XDR"
-            }
-        ]
-    },
-    {
-      "brand": "Nintendo",
-      "devices": [
-         {
-            "resolution": { "horizontal": 240, "vertical": 160 },
-            "diagonal": 2.9,
-            "label": "Game Boy Advance"
-         },
-         {
-            "resolution": { "horizontal": 1280, "vertical": 720 },
-            "diagonal": 6.2,
-            "label": "Nintendo Switch"
-         },
-         {
-            "resolution": { "horizontal": 1280, "vertical": 720 },
-            "diagonal": 5.5,
-            "label": "Nintendo Switch Lite"
-         },
-         {
-            "resolution": { "horizontal": 1280, "vertical": 720 },
-            "diagonal": 7,
-            "label": "Nintendo Switch OLED"
-         }
-      ]
-    },
-    {
-      "brand": "Sony",
-      "devices": [
-         {
-            "resolution": { "horizontal": 480, "vertical": 272 },
-            "diagonal": 4.3,
-            "label": "PlayStation Portable"
-         },
-         {
-            "resolution": { "horizontal": 960, "vertical": 544 },
-            "diagonal": 5,
-            "label": "PlayStation Vita"
-         }
-      ]
-    },
-    {
-      "brand": "Nokia",
-      "devices": [
-         {
-            "resolution": { "horizontal": 240, "vertical": 320 },
-            "diagonal": 2.6,
-            "label": "Nokia N95"
-         },
-         {
-            "resolution": { "horizontal": 360, "vertical": 640 },
-            "diagonal": 3.2,
-            "label": "5800 XpressMusic"
-         },
-         {
-            "resolution": { "horizontal": 360, "vertical": 640 },
-            "diagonal": 3.5,
-            "label": "Nokia N8"
-         },
-         {
-            "resolution": { "horizontal": 640, "vertical": 360 },
-            "diagonal": 4,
-            "label": "Nokia E7"
-         },
-         {
-            "resolution": { "horizontal": 800, "vertical": 480 },
-            "diagonal": 3.5,
-            "label": "Nokia N900"
-         },
-         {
-            "resolution": { "horizontal": 480, "vertical": 854 },
-            "diagonal": 3.9,
-            "label": "Nokia N9"
-         }
-      ]
-    },
-    {
-        "brand": "Dell",
-        "devices": [
-            {
-                "resolution": { "horizontal": 1920, "vertical": 1080 },
-                "diagonal": 21.5,
-                "label": "Dell P2219H"
-            },
-            {
-                "resolution": { "horizontal": 1920, "vertical": 1080 },
-                "diagonal": 23,
-                "label": "Dell P2319H"
-            },
-            {
-                "resolution": { "horizontal": 1920, "vertical": 1080 },
-                "diagonal": 24,
-                "label": "Dell P2419H"
-            },
-            {
-                "resolution": { "horizontal": 2560, "vertical": 1440 },
-                "diagonal": 27,
-                "label": "Dell U2719D"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 27,
-                "label": "Dell U2720Q"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 32,
-                "label": "Dell U3219Q"
-            }
-        ]
-    },
-    {
-      "brand": "Samsung",
-      "devices": [
-          {
-              "resolution": { "horizontal": 3440, "vertical": 1440 },
-              "diagonal": 34,
-              "label": "S34J550"
-          },
-          {
-              "resolution": { "horizontal": 3840, "vertical": 2160 },
-              "diagonal": 28,
-              "label": "U28R550"
-          },
-          {
-              "resolution": { "horizontal": 5120, "vertical": 1440 },
-              "diagonal": 49,
-              "label": "C49RG9"
-          },
-          {
-              "resolution": { "horizontal": 3840, "vertical": 2160 },
-              "diagonal": 43,
-              "label": "Smart Monitor M7"
-          },
-          {
-              "resolution": { "horizontal": 3840, "vertical": 2160 },
-              "diagonal": 65,
-              "label": "QN65Q80B"
-          },
-          {
-              "resolution": { "horizontal": 7680, "vertical": 4320 },
-              "diagonal": 75,
-              "label": "QN75QN900B"
-          }
-      ]
+  {
+    "brand": "Apple",
+    "devices": [
+      { "resolution": { "horizontal": 272, "vertical": 340 }, "diagonal": 1.337, "label": "Apple Watch 38mm" },
+      { "resolution": { "horizontal": 312, "vertical": 390 }, "diagonal": 1.534, "label": "Apple Watch 42mm" },
+      { "resolution": { "horizontal": 324, "vertical": 394 }, "diagonal": 1.549, "label": "Apple Watch (4) 40mm" },
+      { "resolution": { "horizontal": 368, "vertical": 448 }, "diagonal": 1.757, "label": "Apple Watch (4) 44mm" },
+      { "resolution": { "horizontal": 352, "vertical": 430 }, "diagonal": 1.691, "label": "Apple Watch (7) 41mm" },
+      { "resolution": { "horizontal": 396, "vertical": 484 }, "diagonal": 1.901, "label": "Apple Watch (7) 45mm" },
+      { "resolution": { "horizontal": 410, "vertical": 502 }, "diagonal": 1.936, "label": "Apple Watch Ultra" },
+      { "resolution": { "horizontal": 374, "vertical": 446 }, "diagonal": 1.765, "label": "Apple Watch (10) 42mm" },
+      { "resolution": { "horizontal": 416, "vertical": 496 }, "diagonal": 1.96, "label": "Apple Watch (10) 46mm" },
+      { "resolution": { "horizontal": 320, "vertical": 480 }, "diagonal": 3.5, "label": "iPhone" },
+      { "resolution": { "horizontal": 640, "vertical": 960 }, "diagonal": 3.5, "label": "iPhone 4" },
+      { "resolution": { "horizontal": 640, "vertical": 1136 }, "diagonal": 4, "label": "iPhone 5" },
+      { "resolution": { "horizontal": 750, "vertical": 1334 }, "diagonal": 4.7, "label": "iPhone 6" },
+      { "resolution": { "horizontal": 1080, "vertical": 1920 }, "diagonal": 5.5, "label": "iPhone 6 Plus" },
+      { "resolution": { "horizontal": 1125, "vertical": 2436 }, "diagonal": 5.8, "label": "iPhone X" },
+      { "resolution": { "horizontal": 828, "vertical": 1792 }, "diagonal": 6.1, "label": "iPhone XR" },
+      { "resolution": { "horizontal": 1242, "vertical": 2688 }, "diagonal": 6.5, "label": "iPhone XS Max" },
+      { "resolution": { "horizontal": 1080, "vertical": 2340 }, "diagonal": 5.4, "label": "iPhone 12 mini" },
+      { "resolution": { "horizontal": 1170, "vertical": 2532 }, "diagonal": 6.1, "label": "iPhone 12" },
+      { "resolution": { "horizontal": 1284, "vertical": 2778 }, "diagonal": 6.7, "label": "iPhone 12 Pro Max" },
+      { "resolution": { "horizontal": 1179, "vertical": 2556 }, "diagonal": 6.1, "label": "iPhone 14 Pro" },
+      { "resolution": { "horizontal": 1290, "vertical": 2796 }, "diagonal": 6.7, "label": "iPhone 14 Pro Max" },
+      { "resolution": { "horizontal": 1206, "vertical": 2622 }, "diagonal": 6.3, "label": "iPhone 16 Pro" },
+      { "resolution": { "horizontal": 1320, "vertical": 2868 }, "diagonal": 6.9, "label": "iPhone 16 Pro Max" },
+      { "resolution": { "horizontal": 768, "vertical": 1024 }, "diagonal": 9.7, "label": "iPad" },
+      { "resolution": { "horizontal": 1536, "vertical": 2048 }, "diagonal": 9.7, "label": "iPad (3rd Generation)" },
+      { "resolution": { "horizontal": 768, "vertical": 1024 }, "diagonal": 7.9, "label": "iPad mini" },
+      { "resolution": { "horizontal": 1536, "vertical": 2048 }, "diagonal": 7.9, "label": "iPad mini 2" },
+      { "resolution": { "horizontal": 2048, "vertical": 2732 }, "diagonal": 12.9, "label": "iPad Pro" },
+      { "resolution": { "horizontal": 1668, "vertical": 2224 }, "diagonal": 10.5, "label": "iPad Pro (2017)" },
+      { "resolution": { "horizontal": 1668, "vertical": 2388 }, "diagonal": 11, "label": "iPad Pro (2018)" },
+      { "resolution": { "horizontal": 1620, "vertical": 2160 }, "diagonal": 10.2, "label": "iPad (7th Generation)" },
+      { "resolution": { "horizontal": 1640, "vertical": 2360 }, "diagonal": 10.9, "label": "iPad Air (2020)" },
+      { "resolution": { "horizontal": 1488, "vertical": 2266 }, "diagonal": 8.3, "label": "iPad Mini (2021)" },
+      { "resolution": { "horizontal": 2360, "vertical": 1640 }, "diagonal": 11, "label": "iPad Air 11 (2024)" },
+      { "resolution": { "horizontal": 2732, "vertical": 2048 }, "diagonal": 13, "label": "iPad Air 13 (2024)" },
+      { "resolution": { "horizontal": 2420, "vertical": 1668 }, "diagonal": 11, "label": "iPad Pro 11 (2024)" },
+      { "resolution": { "horizontal": 2752, "vertical": 2064 }, "diagonal": 13, "label": "iPad Pro 13 (2024)" },
+      { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 13.3, "label": "MacBook (2006)" },
+      { "resolution": { "horizontal": 1440, "vertical": 900 }, "diagonal": 15.4, "label": "MacBook Pro 15 (2006)" },
+      { "resolution": { "horizontal": 1680, "vertical": 1050 }, "diagonal": 17, "label": "MacBook Pro 17 (2006)" },
+      { "resolution": { "horizontal": 1920, "vertical": 1200 }, "diagonal": 17, "label": "MacBook Pro 17 (2009)" },
+      { "resolution": { "horizontal": 2560, "vertical": 1600 }, "diagonal": 13.3, "label": "MacBook Pro 13 (2012)" },
+      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 15.4, "label": "MacBook Pro 15 (2012)" },
+      { "resolution": { "horizontal": 2304, "vertical": 1440 }, "diagonal": 12, "label": "MacBook 12 (2015)" },
+      { "resolution": { "horizontal": 3072, "vertical": 1920 }, "diagonal": 16, "label": "MacBook Pro 16 (2019)" },
+      { "resolution": { "horizontal": 3024, "vertical": 1964 }, "diagonal": 14.2, "label": "MacBook Pro 14 (2021)" },
+      { "resolution": { "horizontal": 3456, "vertical": 2234 }, "diagonal": 16.2, "label": "MacBook Pro 16 (2021)" },
+      { "resolution": { "horizontal": 2560, "vertical": 1664 }, "diagonal": 13.6, "label": "MacBook Air 13 (2022)" },
+      { "resolution": { "horizontal": 2880, "vertical": 1864 }, "diagonal": 15.3, "label": "MacBook Air 15 (2023)" },
+      { "resolution": { "horizontal": 1440, "vertical": 900 }, "diagonal": 17, "label": "iMac 17 (2006)" },
+      { "resolution": { "horizontal": 1680, "vertical": 1050 }, "diagonal": 20, "label": "iMac 20 (2006)" },
+      { "resolution": { "horizontal": 1920, "vertical": 1200 }, "diagonal": 24, "label": "iMac 24 (2006)" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 21.5, "label": "iMac 21 (2009)" },
+      { "resolution": { "horizontal": 2560, "vertical": 1440 }, "diagonal": 27, "label": "iMac 27 (2009)" },
+      { "resolution": { "horizontal": 5120, "vertical": 2880 }, "diagonal": 27, "label": "iMac 27 (2014)" },
+      { "resolution": { "horizontal": 4096, "vertical": 2304 }, "diagonal": 21.5, "label": "iMac 21 (2015)" },
+      { "resolution": { "horizontal": 4480, "vertical": 2520 }, "diagonal": 23.5, "label": "iMac 24 (2021)" },
+      { "resolution": { "horizontal": 5120, "vertical": 2880 }, "diagonal": 27, "label": "Apple Studio Display" },
+      { "resolution": { "horizontal": 6016, "vertical": 3384 }, "diagonal": 32, "label": "Pro Display XDR" }
+    ]
   },
-    {
-        "brand": "LG",
-        "devices": [
-            {
-               "resolution": { "horizontal": 2880, "vertical": 2560 },
-               "diagonal": 27.6,
-               "label": "LG 28MQ780-B"
-            }, 
-            {
-               "resolution": { "horizontal": 4096, "vertical": 2304 },
-               "diagonal": 21.5,
-               "label": "LG 22MD4KA"
-            },
-            {
-                "resolution": { "horizontal": 5120, "vertical": 2160 },
-                "diagonal": 34,
-                "label": "LG 34WK95U"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 1600 },
-                "diagonal": 38,
-                "label": "LG 38WN95C"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 42,
-                "label": "LG OLED42C2"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 65,
-                "label": "LG OLED65C2"
-            }
-        ]
-    },
-    {
-      "brand": "Acer ",
-      "devices": [
-         {
-            "resolution": { "horizontal": 5120, "vertical": 2880 },
-            "diagonal": 31.5,
-            "label": "Predator XB323QX"
-        }
-      ]
-    },
-    {
-        "brand": "ASUS",
-        "devices": [
-            {
-                "resolution": { "horizontal": 1920, "vertical": 1080 },
-                "diagonal": 24,
-                "label": "VG248QE"
-            },
-            {
-                "resolution": { "horizontal": 2560, "vertical": 1440 },
-                "diagonal": 27,
-                "label": "TUF Gaming VG27AQ"
-            },
-            {
-                "resolution": { "horizontal": 3840, "vertical": 2160 },
-                "diagonal": 28,
-                "label": "TUF Gaming VG28UQL1A"
-            },
-            {
-                "resolution": { "horizontal": 3440, "vertical": 1440 },
-                "diagonal": 34,
-                "label": "ROG Swift PG349Q"
-            }
-        ]
-    },
-    {
-      "brand": "BenQ",
-      "devices": [
-         {
-            "resolution": { "horizontal": 3840, "vertical": 2560 },
-            "diagonal": 28.2,
-            "label": "RD280U"
-        }
-      ]
-    },
-    {
-      "brand": "Microsoft",
-      "devices": [
-         {
-            "resolution": { "horizontal": 1920, "vertical": 1080 },
-            "diagonal": 10.6,
-            "label": "Surface Pro"
-         },
-         {
-            "resolution": { "horizontal": 2160, "vertical": 1440 },
-            "diagonal": 12,
-            "label": "Surface Pro 3"
-         },
-         {
-            "resolution": { "horizontal": 2736, "vertical": 1824 },
-            "diagonal": 12.3,
-            "label": "Surface Pro 4"
-         },
-         {
-            "resolution": { "horizontal": 2880, "vertical": 1920 },
-            "diagonal": 13,
-            "label": "Surface Pro 8"
-         },
-         {
-            "resolution": { "horizontal": 4500, "vertical": 3000 },
-            "diagonal": 28,
-            "label": "Surface Studio"
-         }
-      ]
-    },
-    {
-      "brand": "Lenovo",
-      "devices": [
-         {
-            "resolution": { "horizontal": 2880, "vertical": 1800 },
-            "diagonal": 14,
-            "label": "Lenovo X1 Carbon"
-         }
-      ]
-    },
-    {
-      "brand": "Valve",
-      "devices": [
-         {
-            "resolution": { "horizontal": 1280, "vertical": 800 },
-            "diagonal": 7,
-            "label": "Steam Deck"
-         },
-         {
-            "resolution": { "horizontal": 1280, "vertical": 800 },
-            "diagonal": 7.4,
-            "label": "Steam Deck OLED"
-         }
-      ]
-    }
+  {
+    "brand": "Nintendo",
+    "devices": [
+      { "resolution": { "horizontal": 240, "vertical": 160 }, "diagonal": 2.9, "label": "Game Boy Advance" },
+      { "resolution": { "horizontal": 1280, "vertical": 720 }, "diagonal": 6.2, "label": "Nintendo Switch" },
+      { "resolution": { "horizontal": 1280, "vertical": 720 }, "diagonal": 5.5, "label": "Nintendo Switch Lite" },
+      { "resolution": { "horizontal": 1280, "vertical": 720 }, "diagonal": 7, "label": "Nintendo Switch OLED" }
+    ]
+  },
+  {
+    "brand": "Sony",
+    "devices": [
+      { "resolution": { "horizontal": 480, "vertical": 272 }, "diagonal": 4.3, "label": "PlayStation Portable" },
+      { "resolution": { "horizontal": 960, "vertical": 544 }, "diagonal": 5, "label": "PlayStation Vita" }
+    ]
+  },
+  {
+    "brand": "Nokia",
+    "devices": [
+      { "resolution": { "horizontal": 240, "vertical": 320 }, "diagonal": 2.6, "label": "Nokia N95" },
+      { "resolution": { "horizontal": 360, "vertical": 640 }, "diagonal": 3.2, "label": "5800 XpressMusic" },
+      { "resolution": { "horizontal": 360, "vertical": 640 }, "diagonal": 3.5, "label": "Nokia N8" },
+      { "resolution": { "horizontal": 640, "vertical": 360 }, "diagonal": 4, "label": "Nokia E7" },
+      { "resolution": { "horizontal": 800, "vertical": 480 }, "diagonal": 3.5, "label": "Nokia N900" },
+      { "resolution": { "horizontal": 480, "vertical": 854 }, "diagonal": 3.9, "label": "Nokia N9" }
+    ]
+  },
+  {
+    "brand": "Dell",
+    "devices": [
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 21.5, "label": "Dell P2219H" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 23, "label": "Dell P2319H" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 24, "label": "Dell P2419H" },
+      { "resolution": { "horizontal": 2560, "vertical": 1440 }, "diagonal": 27, "label": "Dell U2719D" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 27, "label": "Dell U2720Q" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 32, "label": "Dell U3219Q" }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "devices": [
+      { "resolution": { "horizontal": 3440, "vertical": 1440 }, "diagonal": 34, "label": "S34J550" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 28, "label": "U28R550" },
+      { "resolution": { "horizontal": 5120, "vertical": 1440 }, "diagonal": 49, "label": "C49RG9" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 43, "label": "Smart Monitor M7" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 65, "label": "QN65Q80B" },
+      { "resolution": { "horizontal": 7680, "vertical": 4320 }, "diagonal": 75, "label": "QN75QN900B" }
+    ]
+  },
+  {
+    "brand": "LG",
+    "devices": [
+      { "resolution": { "horizontal": 2880, "vertical": 2560 }, "diagonal": 27.6, "label": "LG 28MQ780-B" },
+      { "resolution": { "horizontal": 4096, "vertical": 2304 }, "diagonal": 21.5, "label": "LG 22MD4KA" },
+      { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 34, "label": "LG 34WK95U" },
+      { "resolution": { "horizontal": 3840, "vertical": 1600 }, "diagonal": 38, "label": "LG 38WN95C" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 42, "label": "LG OLED42C2" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 65, "label": "LG OLED65C2" }
+    ]
+  },
+  {
+    "brand": "Acer ",
+    "devices": [
+      { "resolution": { "horizontal": 5120, "vertical": 2880 }, "diagonal": 31.5, "label": "Predator XB323QX" }
+    ]
+  },
+  {
+    "brand": "ASUS",
+    "devices": [
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 24, "label": "VG248QE" },
+      { "resolution": { "horizontal": 2560, "vertical": 1440 }, "diagonal": 27, "label": "TUF Gaming VG27AQ" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 28, "label": "TUF Gaming VG28UQL1A" },
+      { "resolution": { "horizontal": 3440, "vertical": 1440 }, "diagonal": 34, "label": "ROG Swift PG349Q" }
+    ]
+  },
+  {
+    "brand": "BenQ",
+    "devices": [{ "resolution": { "horizontal": 3840, "vertical": 2560 }, "diagonal": 28.2, "label": "RD280U" }]
+  },
+  {
+    "brand": "Microsoft",
+    "devices": [
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 10.6, "label": "Surface Pro" },
+      { "resolution": { "horizontal": 2160, "vertical": 1440 }, "diagonal": 12, "label": "Surface Pro 3" },
+      { "resolution": { "horizontal": 2736, "vertical": 1824 }, "diagonal": 12.3, "label": "Surface Pro 4" },
+      { "resolution": { "horizontal": 2880, "vertical": 1920 }, "diagonal": 13, "label": "Surface Pro 8" },
+      { "resolution": { "horizontal": 4500, "vertical": 3000 }, "diagonal": 28, "label": "Surface Studio" }
+    ]
+  },
+  {
+    "brand": "Lenovo",
+    "devices": [
+      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 14, "label": "Lenovo X1 Carbon" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 14, "label": "Lenovo Yoga 9i" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 16, "label": "Lenovo ThinkPad P16 Gen 2" }
+    ]
+  },
+  {
+    "brand": "Valve",
+    "devices": [
+      { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 7, "label": "Steam Deck" },
+      { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 7.4, "label": "Steam Deck OLED" }
+    ]
+  }
 ]
