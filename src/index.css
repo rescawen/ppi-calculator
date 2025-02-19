@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@keyframes bgFadeOut {
+  0%,
+  50% {
+    background-color: rgb(253 230 138); /* amber-200 */
+    padding: 0.125rem; /* p-0.5 */
+    border-radius: 0.25rem; /* rounded */
+  }
+  100% {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+@keyframes textFadeOut {
+  0%,
+  50% {
+    color: rgb(251 146 60); /* text-orange-400 */
+    font-weight: 500; /* font-medium */
+  }
+  100% {
+    color: inherit;
+    font-weight: inherit;
+  }
+}
+
+@utility animate-bg-fade-out {
+  animation: bgFadeOut 700ms ease-out;
+}
+
+@utility animate-text-fade-out {
+  animation: textFadeOut 700ms ease-out;
+}
