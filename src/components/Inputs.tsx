@@ -1,6 +1,7 @@
 import type { Dispatch } from "react"
-import { borderClasses } from "../utils/utils"
-import { DisplayDataState, Action, estimatedScreenSizes } from "../reducers/displayDataReducer"
+import { borderClasses, formatNumberWithThousandsSeparator } from "../utils/utils"
+import { DisplayDataState, Action, estimatedScreenSizes, roundToTwoDecimals } from "../reducers/displayDataReducer"
+import { Tooltip } from "./Tooltip"
 
 function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; dispatch: Dispatch<Action> }) {
   // console.log(`screen ${screen.orientation.type}`)
@@ -17,11 +18,12 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
 
   return (
     <div className={`${borderClasses} grid grid-cols-3 lg:max-w-3xl p-2 m-2`}>
-      <div data-testid="inputs" className="col-span-2 grid grid-cols-1 sm:grid-cols-11 w-full sm:max-w-md">
-        <div className="col-span-4">
+      {/* <div data-testid="inputs" className="col-span-2 grid grid-cols-1 sm:grid-cols-3 w-full sm:max-w-md"> */}
+      <div data-testid="inputs" className="col-span-2 grid grid-cols-1 sm:grid-cols-3">
+        <div className="col-span-1">
           <label>Horizontal resolution:</label>
         </div>
-        <div className="col-span-7">
+        <div className="col-span-2">
           <input
             type="number"
             className="border-2 border-gray-300 rounded-md mr-2"
@@ -31,10 +33,10 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
           <span>pixels</span>
         </div>
 
-        <div className="col-span-4">
+        <div className="col-span-1">
           <label>Vertical resolution:</label>
         </div>
-        <div className="col-span-7">
+        <div className="col-span-2">
           <input
             type="number"
             className="border-2 border-gray-300 rounded-md mr-2"
@@ -44,24 +46,41 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
           <span>pixels</span>
         </div>
 
-        <div className="col-span-4">
+        <div className="col-span-1">
           <label>Diagonal:</label>
         </div>
-        <div className="col-span-7">
+        <div className="col-span-2">
           <input
             type="number"
             className="border-2 border-gray-300 rounded-md mr-2"
             value={displayData.diagonal}
             onChange={(e) => handleChange(e, "diagonal")}
           />
-          <span>inches</span>
+          <span>inches ({roundToTwoDecimals(displayData.diagonal * 2.54)}cm)</span>
         </div>
       </div>
 
       <div className="col-span-1 grid">
-        <div>Total pixels: {displayData.resolution.horizontal * displayData.resolution.vertical}</div>
         <div>
-          Pixel density: <span className="font-semibold text-rose-700">{displayData.pixelPerInch}</span>
+          Megapixels:
+          <Tooltip
+            content={`${formatNumberWithThousandsSeparator(displayData.resolution.horizontal * displayData.resolution.vertical)} pixels`}
+          >
+            <span className="font-semibold">
+              {" "}
+              {roundToTwoDecimals((displayData.resolution.horizontal * displayData.resolution.vertical) / 1000000)}
+            </span>
+          </Tooltip>
+        </div>
+        <div>
+          Aspect ratio:
+          {displayData.aspectRatio.portrait ? (
+            <Tooltip content={`${displayData.aspectRatio.portrait} in portrait`}>
+              <span className="font-semibold"> {displayData.aspectRatio.main}</span>
+            </Tooltip>
+          ) : (
+            <span className="font-semibold"> {displayData.aspectRatio.main}</span>
+          )}
         </div>
         <div>
           {estimatedScreenSizes.length > 1 ? (
@@ -86,6 +105,9 @@ function Inputs({ displayData, dispatch }: { displayData: DisplayDataState; disp
             <>Your resolution is unique.</>
           )}
         </div>
+      </div>
+      <div>
+        Pixel density: <span className="font-semibold text-rose-700">{displayData.pixelPerInch}</span>
       </div>
     </div>
   )
