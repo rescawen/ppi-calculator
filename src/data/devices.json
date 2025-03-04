@@ -156,9 +156,10 @@
   {
     "brand": "Lenovo",
     "devices": [
-      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 14, "label": "Lenovo X1 Carbon" },
-      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 14, "label": "Lenovo Yoga 9i" },
-      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 16, "label": "Lenovo ThinkPad P16 Gen 2" }
+      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 14, "label": "Thinkpad X1 Carbon" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 14, "label": "Yoga 9i" },
+      { "resolution": { "horizontal": 3200, "vertical": 2000 }, "diagonal": 16, "label": "Yoga Pro 9i" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 16, "label": "ThinkPad P16 Gen 2" }
     ]
   },
   {
@@ -166,6 +167,12 @@
     "devices": [
       { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 7, "label": "Steam Deck" },
       { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 7.4, "label": "Steam Deck OLED" }
+    ]
+  },
+  {
+    "brand": "Huawei",
+    "devices": [
+      { "resolution": { "horizontal": 3184, "vertical": 2232 }, "diagonal": 10.2, "label": "Mate XT Ultimate" }
     ]
   }
 ]
