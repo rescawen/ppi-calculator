@@ -5,9 +5,8 @@ interface DisplayDataState {
   diagonal: number
   pixelPerInch: number
   aspectRatio: { main: string; portrait?: string }
+  dimensions: { width: number; height: number }
 }
-
-const ratio = window.devicePixelRatio || 1
 
 let estimatedScreenSizes: number[] = []
 
@@ -67,9 +66,9 @@ const findCommonRatio = (horizontal: number, vertical: number): string | null =>
     "32:9": 32 / 9,
   }
 
-  const ratio = horizontal / vertical
+  const aspectRatio = horizontal / vertical
   for (const [ratioName, value] of Object.entries(commonRatios)) {
-    if (Math.abs(value / ratio - 1) < 0.016) {
+    if (Math.abs(value / aspectRatio - 1) < 0.016) {
       // 1.6% error margin
       return ratioName
     }
@@ -78,12 +77,15 @@ const findCommonRatio = (horizontal: number, vertical: number): string | null =>
 }
 
 // Format a ratio as string when no common ratio is found
-const formatRatio = (h: number, v: number): string => {
-  const r = h / v
-  if (h > v) {
-    return `${roundToTwoDecimals(r)}:1`
+const formatRatio = (horizontal: number, vertical: number): string => {
+  const aspectRatio = horizontal / vertical
+
+  const isLandscape: boolean = horizontal > vertical
+
+  if (isLandscape) {
+    return `${roundToTwoDecimals(aspectRatio)}:1`
   } else {
-    return `1:${roundToTwoDecimals(v / h)}`
+    return `1:${roundToTwoDecimals(vertical / horizontal)}`
   }
 }
 
@@ -113,8 +115,27 @@ const calculateAspectRatio = (horizontal: number, vertical: number): { main: str
   return { main: formatRatio(horizontal, vertical) }
 }
 
+// Calculate width and height based on diagonal and resolution
+const calculateDimensions = (
+  horizontal: number,
+  vertical: number,
+  diagonal: number,
+): { width: number; height: number } => {
+  const aspectRatio = horizontal / vertical
+
+  // Using Pythagorean theorem: width² + height² = diagonal²
+  // And aspect ratio: width = aspectRatio * height
+  // Solve for height: height = √(diagonal² / (1 + aspectRatio²))
+  const height = Math.sqrt((diagonal * diagonal) / (1 + aspectRatio * aspectRatio))
+  const width = height * aspectRatio
+
+  return { width, height }
+}
+
 const calculateInitialValues = () => {
-  const initialResolution = { horizontal: ratio * screen.width, vertical: ratio * screen.height }
+  const devicePixelRatio = window.devicePixelRatio || 1
+
+  const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
 
   const diagonalInches = Math.sqrt((initialResolution.horizontal / 96) ** 2 + (initialResolution.vertical / 96) ** 2)
   estimatedScreenSizes = getScreenSize(resolutions, initialResolution.horizontal, initialResolution.vertical)
@@ -124,18 +145,18 @@ const calculateInitialValues = () => {
   const initialPixelPerInch = estimatedScreenSize
     ? calculatePixelDensity(initialResolution.horizontal, initialResolution.vertical, estimatedScreenSize)
     : 96
-  const initialAspectRatio = calculateAspectRatio(initialResolution.horizontal, initialResolution.vertical)
 
-  return { initialResolution, initialDiagonal, initialPixelPerInch, initialAspectRatio }
+  return { initialResolution, initialDiagonal, initialPixelPerInch }
 }
 
-const { initialResolution, initialDiagonal, initialPixelPerInch, initialAspectRatio } = calculateInitialValues()
+const { initialResolution, initialDiagonal, initialPixelPerInch } = calculateInitialValues()
 
 const initialDisplayDataState: DisplayDataState = {
   resolution: { horizontal: initialResolution.horizontal, vertical: initialResolution.vertical },
   diagonal: initialDiagonal,
   pixelPerInch: initialPixelPerInch,
-  aspectRatio: initialAspectRatio,
+  aspectRatio: calculateAspectRatio(initialResolution.horizontal, initialResolution.vertical),
+  dimensions: calculateDimensions(initialResolution.horizontal, initialResolution.vertical, initialDiagonal),
 }
 
 // rename to something more descriptive?
@@ -152,12 +173,14 @@ const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDat
         resolution: action.payload,
         pixelPerInch: calculatePixelDensity(action.payload.horizontal, action.payload.vertical, state.diagonal),
         aspectRatio: calculateAspectRatio(action.payload.horizontal, action.payload.vertical),
+        dimensions: calculateDimensions(action.payload.horizontal, action.payload.vertical, state.diagonal),
       }
     case "SET_DIAGONAL":
       return {
         ...state,
         diagonal: action.payload,
         pixelPerInch: calculatePixelDensity(state.resolution.horizontal, state.resolution.vertical, action.payload),
+        dimensions: calculateDimensions(state.resolution.horizontal, state.resolution.vertical, action.payload),
       }
     case "SET_ALL":
       return {
@@ -170,6 +193,11 @@ const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDat
           action.payload.diagonal,
         ),
         aspectRatio: calculateAspectRatio(action.payload.resolution.horizontal, action.payload.resolution.vertical),
+        dimensions: calculateDimensions(
+          action.payload.resolution.horizontal,
+          action.payload.resolution.vertical,
+          action.payload.diagonal,
+        ),
       }
     default:
       return state
