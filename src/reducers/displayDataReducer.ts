@@ -1,8 +1,8 @@
 import resolutions from "../data/example.json"
 
 interface DisplayDataState {
-  resolution: { horizontal: number; vertical: number }
-  diagonal: number
+  resolution: { horizontal: number | null; vertical: number | null }
+  diagonal: number | null
   pixelPerInch: number
   aspectRatio: { main: string; portrait?: string }
   dimensions: { width: number; height: number }
@@ -30,15 +30,24 @@ export const roundToTwoDecimals = (value: number): number => parseFloat(value.to
 
 // calculate ppi/dpi based on resolution and screen size
 const calculatePixelDensity = (
-  horizontalResolution: number,
-  verticalResolution: number,
-  diagonalInches: number,
+  horizontalResolution: number | null,
+  verticalResolution: number | null,
+  diagonalInches: number | null,
 ): number => {
+  // Null coalesce null into 0
+  const h = horizontalResolution ?? 0
+  const v = verticalResolution ?? 0
+  const d = diagonalInches ?? 0
+
+  // Check if either resolution is 0
+  if (h === 0 || v === 0) {
+    return 0
+  }
   // Calculate the diagonal resolution using the Pythagorean theorem
-  const diagonalResolution = Math.sqrt(horizontalResolution ** 2 + verticalResolution ** 2)
+  const diagonalResolution = Math.sqrt(h ** 2 + v ** 2)
 
   // Calculate pixel density (PPI)
-  const pixelDensity = diagonalResolution / diagonalInches
+  const pixelDensity = diagonalResolution / d
 
   return roundToTwoDecimals(pixelDensity) // Return the calculated pixel density
 }
@@ -90,6 +99,7 @@ const formatRatio = (horizontal: number, vertical: number): string => {
 }
 
 const calculateAspectRatio = (horizontal: number, vertical: number): { main: string; portrait?: string } => {
+  // console.log(`screen ${screen.orientation.type}`) TODO: use this api instead of manually checking for pixels?
   // Check if we're in portrait mode
   const isPortrait: boolean = vertical > horizontal
 
@@ -117,16 +127,20 @@ const calculateAspectRatio = (horizontal: number, vertical: number): { main: str
 
 // Calculate width and height based on diagonal and resolution
 const calculateDimensions = (
-  horizontal: number,
-  vertical: number,
-  diagonal: number,
+  horizontalResolution: number | null,
+  verticalResolution: number | null,
+  diagonalInches: number | null,
 ): { width: number; height: number } => {
-  const aspectRatio = horizontal / vertical
+  // Null coalesce null into 0
+  const h = horizontalResolution ?? 0
+  const v = verticalResolution ?? 0
+  const d = diagonalInches ?? 0
 
   // Using Pythagorean theorem: width² + height² = diagonal²
-  // And aspect ratio: width = aspectRatio * height
-  // Solve for height: height = √(diagonal² / (1 + aspectRatio²))
-  const height = Math.sqrt((diagonal * diagonal) / (1 + aspectRatio * aspectRatio))
+  const aspectRatio = h / v
+  // Solve for height = √(diagonal² / (1 + aspectRatio²))
+  const height = Math.sqrt((d * d) / (1 + aspectRatio * aspectRatio))
+  // Solve for width = aspectRatio * height
   const width = height * aspectRatio
 
   return { width, height }
@@ -172,7 +186,7 @@ const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDat
         ...state,
         resolution: action.payload,
         pixelPerInch: calculatePixelDensity(action.payload.horizontal, action.payload.vertical, state.diagonal),
-        aspectRatio: calculateAspectRatio(action.payload.horizontal, action.payload.vertical),
+        aspectRatio: calculateAspectRatio(action.payload.horizontal ?? 0, action.payload.vertical ?? 0),
         dimensions: calculateDimensions(action.payload.horizontal, action.payload.vertical, state.diagonal),
       }
     case "SET_DIAGONAL":
@@ -192,7 +206,10 @@ const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDat
           action.payload.resolution.vertical,
           action.payload.diagonal,
         ),
-        aspectRatio: calculateAspectRatio(action.payload.resolution.horizontal, action.payload.resolution.vertical),
+        aspectRatio: calculateAspectRatio(
+          action.payload.resolution.horizontal ?? 0,
+          action.payload.resolution.vertical ?? 0,
+        ),
         dimensions: calculateDimensions(
           action.payload.resolution.horizontal,
           action.payload.resolution.vertical,
