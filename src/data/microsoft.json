@@ -1,0 +1,12 @@
+[
+  {
+    "brand": "Microsoft",
+    "devices": [
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 10.6, "label": "Surface Pro" },
+      { "resolution": { "horizontal": 2160, "vertical": 1440 }, "diagonal": 12, "label": "Surface Pro 3" },
+      { "resolution": { "horizontal": 2736, "vertical": 1824 }, "diagonal": 12.3, "label": "Surface Pro 4" },
+      { "resolution": { "horizontal": 2880, "vertical": 1920 }, "diagonal": 13, "label": "Surface Pro 8" },
+      { "resolution": { "horizontal": 4500, "vertical": 3000 }, "diagonal": 28, "label": "Surface Studio" }
+    ]
+  }
+]

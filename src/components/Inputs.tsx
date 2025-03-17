@@ -37,7 +37,7 @@ function Inputs({
   }
 
   return (
-    <div className={`${borderClasses} grid grid-cols-3 lg:max-w-3xl p-2 m-2`}>
+    <div className={`${borderClasses} grid md:grid-cols-3 md:w-3xl p-2 m-2`}>
       {/* <div data-testid="inputs" className="col-span-2 grid grid-cols-1 sm:grid-cols-3 w-full sm:max-w-md"> TODO: Check for w-full sm:max-w-md use cases? */}
       <div data-testid="inputs-container" className="col-span-2 grid grid-cols-1 sm:grid-cols-3">
         <div className="col-span-1">
@@ -85,8 +85,8 @@ function Inputs({
         </div>
       </div>
 
-      <div className="col-span-1 grid">
-        <div>
+      <div className="col-span-1 grid mt-7 sm:mt-0">
+        <div className="text-center sm:text-left">
           Megapixels:
           <Tooltip
             content={`${formatNumberWithThousandsSeparator((displayData.resolution.horizontal ?? 0) * (displayData.resolution.vertical ?? 0))} pixels`}
@@ -99,7 +99,7 @@ function Inputs({
             </span>
           </Tooltip>
         </div>
-        <div>
+        <div className="text-center sm:text-left">
           Aspect ratio:
           {displayData.aspectRatio.portrait ? (
             <Tooltip content={`${displayData.aspectRatio.portrait} in portrait`}>
@@ -109,7 +109,7 @@ function Inputs({
             <span className="font-semibold"> {displayData.aspectRatio.main}</span>
           )}
         </div>
-        <div className="min-h-6">
+        <div className="min-h-6 text-center sm:text-left">
           {!isDefaultDisplayDataChanged ? (
             estimatedScreenSizes.length > 1 ? (
               <>
@@ -138,7 +138,7 @@ function Inputs({
         </div>
       </div>
       <div className="col-span-3 mt-1.5 font-semibold" data-testid="calculation-results">
-        <span className="font-normal">Display size: </span>
+        <span className="font-normal block sm:inline">Display size: </span>
         <Tooltip
           content={`${roundToTwoDecimals(displayData.dimensions.width)}" x ${roundToTwoDecimals(displayData.dimensions.height)}" = ${roundToTwoDecimals(displayData.dimensions.width * displayData.dimensions.height)}in²`}
         >
@@ -152,16 +152,19 @@ function Inputs({
         <span data-testid="ppi-result">
           <span className="font-bold text-rose-700">{displayData.pixelPerInch}</span> PPI
         </span>
-        <span>
-          , {displayData.pixelPerInch !== 0 ? <span>{(25.4 / displayData.pixelPerInch).toFixed(4)}mm </span> : "∞mm "}
+        <span className="block sm:inline">
+          <span className="hidden sm:inline">, </span>
+          <span>
+            {displayData.pixelPerInch !== 0 ? <span>{(25.4 / displayData.pixelPerInch).toFixed(4)}mm </span> : "∞mm "}
+          </span>
+          <a
+            className="font-medium text-blue-600 cursor-pointer underline hover:text-purple-700"
+            href="https://en.wikipedia.org/wiki/Dot_pitch"
+          >
+            dot pitch
+          </a>
+          , <span>{(displayData.pixelPerInch * displayData.pixelPerInch).toFixed(0)} PPI²</span>
         </span>
-        <a
-          className="font-medium text-blue-600 cursor-pointer underline hover:text-purple-700"
-          href="https://en.wikipedia.org/wiki/Dot_pitch"
-        >
-          dot pitch
-        </a>
-        , <span>{(displayData.pixelPerInch * displayData.pixelPerInch).toFixed(0)} PPI²</span>
       </div>
     </div>
   )

@@ -1,0 +1,12 @@
+[
+  {
+    "brand": "Lenovo",
+    "devices": [
+      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 14, "label": "Thinkpad X1 Carbon" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 14, "label": "Yoga 9i" },
+      { "resolution": { "horizontal": 3200, "vertical": 2000 }, "diagonal": 16, "label": "Yoga Pro 9i" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 16, "label": "ThinkPad P16 Gen 2" },
+      { "resolution": { "horizontal": 3840, "vertical": 1200 }, "diagonal": 43.4, "label": "ThinkVision P44w-10" }
+    ]
+  }
+]

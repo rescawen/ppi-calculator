@@ -1,0 +1,21 @@
+[
+  {
+    "brand": "Dell",
+    "devices": [
+      { "resolution": { "horizontal": 1280, "vertical": 1024 }, "diagonal": 19, "label": "Dell P1917S" },
+      { "resolution": { "horizontal": 1440, "vertical": 900 }, "diagonal": 19.5, "label": "Dell P2016" },
+      { "resolution": { "horizontal": 1600, "vertical": 900 }, "diagonal": 19.5, "label": "Dell P2017H" },
+      { "resolution": { "horizontal": 1680, "vertical": 1050 }, "diagonal": 22, "label": "Dell U2209wa" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 21.5, "label": "Dell P2219H" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 23, "label": "Dell P2319H" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 24, "label": "Dell P2419H" },
+      { "resolution": { "horizontal": 2560, "vertical": 1440 }, "diagonal": 27, "label": "Dell U2719D" },
+      { "resolution": { "horizontal": 2560, "vertical": 1600 }, "diagonal": 29.77, "label": "Dell U3014" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 27, "label": "Dell U2720Q" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 32, "label": "Dell U3219Q" },
+      { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 39.7, "label": "Dell U4025QW" },
+      { "resolution": { "horizontal": 6144, "vertical": 3456 }, "diagonal": 31.5, "label": "Dell U3224KB" },
+      { "resolution": { "horizontal": 7680, "vertical": 4320 }, "diagonal": 31.5, "label": "Dell UP3218K" }
+    ]
+  }
+]

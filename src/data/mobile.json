@@ -1,0 +1,13 @@
+[
+  {
+    "brand": "Nokia",
+    "devices": [
+      { "resolution": { "horizontal": 240, "vertical": 320 }, "diagonal": 2.6, "label": "Nokia N95" },
+      { "resolution": { "horizontal": 360, "vertical": 640 }, "diagonal": 3.2, "label": "5800 XpressMusic" },
+      { "resolution": { "horizontal": 360, "vertical": 640 }, "diagonal": 3.5, "label": "Nokia N8" },
+      { "resolution": { "horizontal": 640, "vertical": 360 }, "diagonal": 4, "label": "Nokia E7" },
+      { "resolution": { "horizontal": 800, "vertical": 480 }, "diagonal": 3.5, "label": "Nokia N900" },
+      { "resolution": { "horizontal": 480, "vertical": 854 }, "diagonal": 3.9, "label": "Nokia N9" }
+    ]
+  }
+]

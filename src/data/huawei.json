@@ -1,0 +1,8 @@
+[
+  {
+    "brand": "Huawei",
+    "devices": [
+      { "resolution": { "horizontal": 3184, "vertical": 2232 }, "diagonal": 10.2, "label": "Mate XT Ultimate" }
+    ]
+  }
+]

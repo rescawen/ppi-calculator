@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useState } from "react"
 import Inputs from "./components/Inputs"
-import Container from "./components/ResolutionBlocks"
+import ResolutionBlocks from "./components/ResolutionBlocks"
 import { displayDataReducer, initialDisplayDataState } from "../src/reducers/displayDataReducer"
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Inputs displayData={displayData} dispatch={dispatch} isDefaultDisplayDataChanged={isDefaultDisplayDataChanged} />
-      <Container dispatch={dispatch} />
+      <ResolutionBlocks dispatch={dispatch} />
     </>
   )
 }

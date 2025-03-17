@@ -1,0 +1,13 @@
+[
+  {
+    "brand": "EIZO",
+    "devices": [
+      { "resolution": { "horizontal": 1600, "vertical": 1200 }, "diagonal": 21.3, "label": "S2133" },
+      { "resolution": { "horizontal": 4096, "vertical": 2160 }, "diagonal": 31.1, "label": "CG318-4K" }
+    ]
+  },
+  {
+    "brand": "Sceptre",
+    "devices": [{ "resolution": { "horizontal": 2560, "vertical": 1080 }, "diagonal": 25.7, "label": "E265W-FUDS" }]
+  }
+]

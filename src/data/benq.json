@@ -1,0 +1,9 @@
+[
+  {
+    "brand": "BenQ",
+    "devices": [
+      { "resolution": { "horizontal": 2560, "vertical": 1600 }, "diagonal": 24.1, "label": "RD240Q" },
+      { "resolution": { "horizontal": 3840, "vertical": 2560 }, "diagonal": 28.2, "label": "RD280U" }
+    ]
+  }
+]
