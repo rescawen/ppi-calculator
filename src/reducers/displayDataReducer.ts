@@ -1,6 +1,6 @@
 import resolutions from "../data/example.json"
 
-interface DisplayDataState {
+export interface DisplayDataState {
   resolution: { horizontal: number | null; vertical: number | null }
   diagonal: number | null
   pixelPerInch: number
@@ -8,7 +8,7 @@ interface DisplayDataState {
   dimensions: { width: number; height: number }
 }
 
-let estimatedScreenSizes: number[] = []
+export let estimatedScreenSizes: number[] = []
 
 // Define the interface for the resolution object
 interface Resolution {
@@ -165,7 +165,7 @@ const calculateInitialValues = () => {
 
 const { initialResolution, initialDiagonal, initialPixelPerInch } = calculateInitialValues()
 
-const initialDisplayDataState: DisplayDataState = {
+export const initialDisplayDataState: DisplayDataState = {
   resolution: { horizontal: initialResolution.horizontal, vertical: initialResolution.vertical },
   diagonal: initialDiagonal,
   pixelPerInch: initialPixelPerInch,
@@ -174,12 +174,12 @@ const initialDisplayDataState: DisplayDataState = {
 }
 
 // rename to something more descriptive?
-type Action =
+export type Action =
   | { type: "SET_RESOLUTION"; payload: DisplayDataState["resolution"] }
   | { type: "SET_DIAGONAL"; payload: DisplayDataState["diagonal"] }
   | { type: "SET_ALL"; payload: { resolution: DisplayDataState["resolution"]; diagonal: DisplayDataState["diagonal"] } }
 
-const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDataState => {
+export const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDataState => {
   switch (action.type) {
     case "SET_RESOLUTION":
       return {
@@ -220,6 +220,3 @@ const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDat
       return state
   }
 }
-
-export { initialDisplayDataState, displayDataReducer, estimatedScreenSizes }
-export type { DisplayDataState, Action }
