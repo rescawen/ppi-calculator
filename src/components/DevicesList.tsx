@@ -2,20 +2,9 @@ import { useContext } from "react"
 import { DevicesListContext } from "../components/ResolutionBlocks"
 import { borderClasses } from "../utils/utils"
 
-interface Device {
-  resolution: { horizontal: number; vertical: number }
-  diagonal: number
-  label: string
-}
-
-interface DevicesGroup {
-  brand: string
-  devices: Device[]
-}
-
-interface DevicesListProps {
-  deviceList: DevicesGroup[]
-}
+type Device = { resolution: { horizontal: number; vertical: number }; diagonal: number; label: string }
+type DevicesGroup = { brand: string; devices: Device[] }
+type DevicesListProps = { deviceList: DevicesGroup[] }
 
 export function DevicesList({ deviceList }: DevicesListProps) {
   const { dispatch, animatingItems, setAnimatingItems } = useContext(DevicesListContext)

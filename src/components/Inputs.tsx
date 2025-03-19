@@ -30,7 +30,7 @@ function Inputs({
       if (dimension === "horizontal" || dimension === "vertical") {
         const newResolution = { ...displayData.resolution, [dimension]: parsedValue }
         dispatch({ type: "SET_RESOLUTION", payload: newResolution })
-      } else {
+      } else if (dimension === "diagonal") {
         dispatch({ type: "SET_DIAGONAL", payload: parsedValue })
       }
     }

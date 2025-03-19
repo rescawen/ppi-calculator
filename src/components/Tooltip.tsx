@@ -6,7 +6,7 @@ import {
   TooltipArrow,
 } from "@radix-ui/react-tooltip" // Import necessary components
 
-interface TooltipProps {
+type TooltipProps = {
   content: React.ReactNode // Define the content prop
   children: React.ReactNode // Define the children prop
 }
@@ -43,7 +43,7 @@ export const Tooltip = ({ content, children }: TooltipProps) => {
 //  } from "@radix-ui/react-tooltip" // Import necessary components
 //  import { useState, useEffect, useRef } from "react" // Import React hooks
 
-//  interface TooltipProps {
+//  type TooltipProps = {
 //    content: React.ReactNode // Define the content prop
 //    children: React.ReactNode // Define the children prop
 //    mobileClickable?: boolean // Optional prop to enable click behavior on mobile

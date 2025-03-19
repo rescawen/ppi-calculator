@@ -16,11 +16,9 @@ import lenovoDevices from "../data/lenovo.json"
 import huaweiDevices from "../data/huawei.json"
 import miscDevices from "../data/misc.json"
 
-interface AnimatingItems {
-  [key: string]: boolean
-}
+type AnimatingItems = { [key: string]: boolean }
 
-interface DevicesListContextType {
+type DevicesListContextType = {
   dispatch: Dispatch<Action>
   animatingItems: AnimatingItems
   setAnimatingItems: Dispatch<SetStateAction<AnimatingItems>>
@@ -38,17 +36,13 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
 
   useEffect(() => {
     // Handle window resize
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
+    const handleResize = () => setWindowWidth(window.innerWidth)
 
     // Add event listener
     window.addEventListener("resize", handleResize)
 
     // Clean up
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   // Determine layout based on window width
