@@ -110,8 +110,37 @@ function Inputs({
           )}
         </div>
         <div className="min-h-6 text-center sm:text-left">
-          {!isDefaultDisplayDataChanged ? (
-            estimatedScreenSizes.length > 1 ? (
+          {/* {(() => {
+            if (!isDefaultDisplayDataChanged) {
+              if (estimatedScreenSizes.length > 1) {
+                return (
+                  <>
+                    Is your screen size{" "}
+                    {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
+                      <span key={index}>
+                        <span
+                          onClick={() => {
+                            dispatch({ type: "SET_DIAGONAL", payload: alternateScreenSize })
+                          }}
+                          className="text-blue-600 cursor-pointer underline"
+                        >
+                          {alternateScreenSize}
+                        </span>
+                        {index < estimatedScreenSizes.length - 2 ? ", " : ""}
+                      </span>
+                    ))}
+                    ?
+                  </>
+                )
+              } else {
+                return <>Your resolution is unique.</>
+              }
+            } else {
+              return null
+            }
+          })()} */}
+          {!isDefaultDisplayDataChanged &&
+            (estimatedScreenSizes.length > 1 ? (
               <>
                 Is your screen size{" "}
                 {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
@@ -131,10 +160,7 @@ function Inputs({
               </>
             ) : (
               <>Your resolution is unique.</>
-            )
-          ) : (
-            ""
-          )}
+            ))}
         </div>
       </div>
       <div className="col-span-3 mt-1.5 font-semibold" data-testid="calculation-results">
