@@ -1,4 +1,4 @@
-import resolutions from "../data/example.json"
+import resolutions from "../data/resolutionScreenSizeEstimates.json"
 
 export type DisplayDataState = {
   resolution: { horizontal: number | null; vertical: number | null }

@@ -54,7 +54,6 @@ function Inputs({
           />
           <span>pixels</span>
         </div>
-
         <div className="col-span-1">
           <label>Vertical resolution:</label>
         </div>
@@ -65,6 +64,7 @@ function Inputs({
             className="border-2 border-gray-300 rounded-md mr-2 text-right"
             value={displayData.resolution.vertical ?? ""}
             onChange={(e) => handleChange(e, "vertical")}
+            data-testid="vertical-resolution-input"
           />
           <span>pixels</span>
         </div>
@@ -80,13 +80,14 @@ function Inputs({
             className="border-2 border-gray-300 rounded-md mr-2 text-right"
             value={displayData.diagonal ?? ""}
             onChange={(e) => handleChange(e, "diagonal")}
+            data-testid="diagonal-input"
           />
           <span>inches ({roundToTwoDecimals(displayData.diagonal ? displayData.diagonal * 2.54 : 0)}cm)</span>
         </div>
       </div>
 
-      <div className="col-span-1 grid mt-7 sm:mt-0">
-        <div className="text-center sm:text-left">
+      <div className="col-span-1 grid mt-7 sm:mt-0" data-testid="calculation-info">
+        <div className="text-center sm:text-left" data-testid="megapixels">
           Megapixels:
           <Tooltip
             content={`${formatNumberWithThousandsSeparator((displayData.resolution.horizontal ?? 0) * (displayData.resolution.vertical ?? 0))} pixels`}
@@ -99,7 +100,7 @@ function Inputs({
             </span>
           </Tooltip>
         </div>
-        <div className="text-center sm:text-left">
+        <div className="text-center sm:text-left" data-testid="aspect-ratio">
           Aspect ratio:
           {displayData.aspectRatio.portrait ? (
             <Tooltip content={`${displayData.aspectRatio.portrait} in portrait`}>
@@ -109,36 +110,7 @@ function Inputs({
             <span className="font-semibold"> {displayData.aspectRatio.main}</span>
           )}
         </div>
-        <div className="min-h-6 text-center sm:text-left">
-          {/* {(() => {
-            if (!isDefaultDisplayDataChanged) {
-              if (estimatedScreenSizes.length > 1) {
-                return (
-                  <>
-                    Is your screen size{" "}
-                    {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
-                      <span key={index}>
-                        <span
-                          onClick={() => {
-                            dispatch({ type: "SET_DIAGONAL", payload: alternateScreenSize })
-                          }}
-                          className="text-blue-600 cursor-pointer underline"
-                        >
-                          {alternateScreenSize}
-                        </span>
-                        {index < estimatedScreenSizes.length - 2 ? ", " : ""}
-                      </span>
-                    ))}
-                    ?
-                  </>
-                )
-              } else {
-                return <>Your resolution is unique.</>
-              }
-            } else {
-              return null
-            }
-          })()} */}
+        <div className="min-h-6 text-center sm:text-left" data-testid="screen-size-suggestion">
           {!isDefaultDisplayDataChanged &&
             (estimatedScreenSizes.length > 1 ? (
               <>

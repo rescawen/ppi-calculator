@@ -5,7 +5,6 @@ import { displayDataReducer, initialDisplayDataState } from "../src/reducers/dis
 
 function App() {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)
-
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
 
   useEffect(() => {
