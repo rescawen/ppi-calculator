@@ -48,6 +48,7 @@ const findCommonRatio = (horizontal: number, vertical: number): string | null =>
     "3:4": 3 / 4,
     "16:18": 8 / 9,
     "1:1": 1,
+    "23:20": 23 / 20,
     "5:4": 5 / 4,
     "4:3": 4 / 3,
     "IMAX 1.43:1": 1.43,
@@ -57,6 +58,8 @@ const findCommonRatio = (horizontal: number, vertical: number): string | null =>
     "16:10": 16 / 10,
     "16:9": 16 / 9,
     "17:9": 17 / 9,
+    "18:9": 2 / 1,
+    "19:9": 19 / 9,
     "19.5:9": 39 / 18,
     "20:9": 20 / 9,
     "21:9": 21 / 9,
@@ -66,7 +69,7 @@ const findCommonRatio = (horizontal: number, vertical: number): string | null =>
   }
 
   const aspectRatio = horizontal / vertical
-  const errorMargin = 0.016 // 1.6% error margin
+  const errorMargin = 0.019 // 1.9% error margin
 
   for (const [ratioName, value] of Object.entries(commonRatios)) {
     if (Math.abs(value / aspectRatio - 1) < errorMargin) {
