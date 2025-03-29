@@ -4,6 +4,8 @@ import { DevicesList } from "../components/DevicesList"
 
 import appleDevices from "../data/devices/apple.json"
 import gameConsoleDevices from "../data/devices/gameConsole.json"
+import razerDevices from "../data/devices/razer.json"
+import sonyDevices from "../data/devices/sony.json"
 import mobileDevices from "../data/devices/mobile.json"
 import dellDevices from "../data/devices/dell.json"
 import samsungDevices from "../data/devices/samsung.json"
@@ -56,29 +58,11 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
           </div>
           <div className="col-span-1">
             <DevicesList deviceList={gameConsoleDevices} />
+            <DevicesList deviceList={razerDevices} />
+            <DevicesList deviceList={sonyDevices} />
             <DevicesList deviceList={mobileDevices} />
-            <DevicesList deviceList={dellDevices} />
-            <DevicesList deviceList={microsoftDevices} />
           </div>
           <div className="col-span-1">
-            <DevicesList deviceList={samsungDevices} />
-            <DevicesList deviceList={lgDevices} />
-            <DevicesList deviceList={acerDevices} />
-            <DevicesList deviceList={asusDevices} />
-            <DevicesList deviceList={benqDevices} />
-          </div>
-          <div className="col-span-1">
-            <DevicesList deviceList={lenovoDevices} />
-            <DevicesList deviceList={huaweiDevices} />
-            <DevicesList deviceList={miscDevices} />
-          </div>
-          {/**Duplicate copy paste below to test responsive design for wide screens*/}
-          <div className="col-span-1">
-            <DevicesList deviceList={appleDevices} />
-          </div>
-          <div className="col-span-1">
-            <DevicesList deviceList={gameConsoleDevices} />
-            <DevicesList deviceList={mobileDevices} />
             <DevicesList deviceList={dellDevices} />
             <DevicesList deviceList={microsoftDevices} />
           </div>
@@ -105,6 +89,8 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
           </div>
           <div className="col-span-1">
             <DevicesList deviceList={gameConsoleDevices} />
+            <DevicesList deviceList={razerDevices} />
+            <DevicesList deviceList={sonyDevices} />
             <DevicesList deviceList={mobileDevices} />
             <DevicesList deviceList={dellDevices} />
             <DevicesList deviceList={microsoftDevices} />
@@ -130,6 +116,8 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
           <div className="col-span-1">
             <DevicesList deviceList={appleDevices} />
             <DevicesList deviceList={gameConsoleDevices} />
+            <DevicesList deviceList={razerDevices} />
+            <DevicesList deviceList={sonyDevices} />
             <DevicesList deviceList={mobileDevices} />
           </div>
           <div className="col-span-1">
