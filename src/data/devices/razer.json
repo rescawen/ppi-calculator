@@ -1,0 +1,9 @@
+[
+  {
+    "brand": "Razer",
+    "devices": [
+      { "resolution": { "horizontal": 3200, "vertical": 1800 }, "diagonal": 14, "label": "Razer Blade 2014" },
+      { "resolution": { "horizontal": 1440, "vertical": 2560 }, "diagonal": 5.7, "label": "Razer Phone" }
+    ]
+  }
+]

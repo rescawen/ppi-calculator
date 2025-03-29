@@ -1,0 +1,15 @@
+[
+  {
+    "brand": "Sony",
+    "devices": [
+      { "resolution": { "horizontal": 480, "vertical": 272 }, "diagonal": 4.3, "label": "PlayStation Portable" },
+      { "resolution": { "horizontal": 960, "vertical": 544 }, "diagonal": 5, "label": "PlayStation Vita" },
+      { "resolution": { "horizontal": 2160, "vertical": 3840 }, "diagonal": 5.5, "label": "Xperia Z5 Premium" },
+      { "resolution": { "horizontal": 2160, "vertical": 3840 }, "diagonal": 5.46, "label": "Xperia XZ Premium" },
+      { "resolution": { "horizontal": 2160, "vertical": 3840 }, "diagonal": 5.8, "label": "Xperia XZ Premium 2" },
+      { "resolution": { "horizontal": 1440, "vertical": 2880 }, "diagonal": 6, "label": "Xperia XZ3" },
+      { "resolution": { "horizontal": 1080, "vertical": 2520 }, "diagonal": 6, "label": "Xperia 10" },
+      { "resolution": { "horizontal": 1644, "vertical": 3840 }, "diagonal": 6, "label": "Xperia 1" }
+    ]
+  }
+]

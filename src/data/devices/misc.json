@@ -9,5 +9,6 @@
   {
     "brand": "Sceptre",
     "devices": [{ "resolution": { "horizontal": 2560, "vertical": 1080 }, "diagonal": 25.7, "label": "E265W-FUDS" }]
-  }
+  },
+  { "brand": "NEC", "devices": [] }
 ]

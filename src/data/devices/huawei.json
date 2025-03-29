@@ -2,7 +2,8 @@
   {
     "brand": "Huawei",
     "devices": [
-      { "resolution": { "horizontal": 3184, "vertical": 2232 }, "diagonal": 10.2, "label": "Mate XT Ultimate" }
+      { "resolution": { "horizontal": 3184, "vertical": 2232 }, "diagonal": 10.2, "label": "Mate XT Ultimate" },
+      { "resolution": { "horizontal": 1320, "vertical": 2120 }, "diagonal": 6.3, "label": "Pura X" }
     ]
   }
 ]

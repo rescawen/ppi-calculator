@@ -9,13 +9,6 @@
     ]
   },
   {
-    "brand": "Sony",
-    "devices": [
-      { "resolution": { "horizontal": 480, "vertical": 272 }, "diagonal": 4.3, "label": "PlayStation Portable" },
-      { "resolution": { "horizontal": 960, "vertical": 544 }, "diagonal": 5, "label": "PlayStation Vita" }
-    ]
-  },
-  {
     "brand": "Valve",
     "devices": [
       { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 7, "label": "Steam Deck" },

@@ -2,6 +2,7 @@
   {
     "brand": "Microsoft",
     "devices": [
+      { "resolution": { "horizontal": 1350, "vertical": 1800 }, "diagonal": 5.6, "label": "Surface Duo" },
       { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 10.6, "label": "Surface Pro" },
       { "resolution": { "horizontal": 2160, "vertical": 1440 }, "diagonal": 12, "label": "Surface Pro 3" },
       { "resolution": { "horizontal": 2736, "vertical": 1824 }, "diagonal": 12.3, "label": "Surface Pro 4" },

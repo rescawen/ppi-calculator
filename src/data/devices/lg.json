@@ -9,8 +9,6 @@
       { "resolution": { "horizontal": 2880, "vertical": 2560 }, "diagonal": 27.6, "label": "LG 28MQ780-B" },
       { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 34, "label": "LG 34WK95U" },
       { "resolution": { "horizontal": 3840, "vertical": 1600 }, "diagonal": 38, "label": "LG 38WN95C" },
-      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 42, "label": "LG OLED42C2" },
-      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 65, "label": "LG OLED65C2" },
       { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 44.5, "label": "LG 45GX950A" }
     ]
   }

@@ -2,13 +2,13 @@
   {
     "brand": "Samsung",
     "devices": [
+      { "resolution": { "horizontal": 1080, "vertical": 1920 }, "diagonal": 5, "label": "Galaxy S4" },
+      { "resolution": { "horizontal": 1080, "vertical": 2280 }, "diagonal": 5.8, "label": "Galaxy S10e" },
+      { "resolution": { "horizontal": 1440, "vertical": 3040 }, "diagonal": 6.8, "label": "Galaxy Note 10+" },
       { "resolution": { "horizontal": 3440, "vertical": 1440 }, "diagonal": 34, "label": "C34J791" },
       { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 28, "label": "U28R550" },
       { "resolution": { "horizontal": 3840, "vertical": 1080 }, "diagonal": 49, "label": "C49HG90" },
-      { "resolution": { "horizontal": 5120, "vertical": 1440 }, "diagonal": 48.8, "label": "S49AG95NC" },
-      { "resolution": { "horizontal": 7680, "vertical": 2160 }, "diagonal": 57, "label": "S57CG950N" },
-      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 65, "label": "QN65Q80B" },
-      { "resolution": { "horizontal": 7680, "vertical": 4320 }, "diagonal": 75, "label": "QN75QN900B" }
+      { "resolution": { "horizontal": 5120, "vertical": 1440 }, "diagonal": 48.8, "label": "S49AG95NC" }
     ]
   }
 ]

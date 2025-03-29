@@ -7,7 +7,42 @@
       { "resolution": { "horizontal": 360, "vertical": 640 }, "diagonal": 3.5, "label": "Nokia N8" },
       { "resolution": { "horizontal": 640, "vertical": 360 }, "diagonal": 4, "label": "Nokia E7" },
       { "resolution": { "horizontal": 800, "vertical": 480 }, "diagonal": 3.5, "label": "Nokia N900" },
-      { "resolution": { "horizontal": 480, "vertical": 854 }, "diagonal": 3.9, "label": "Nokia N9" }
+      { "resolution": { "horizontal": 480, "vertical": 854 }, "diagonal": 3.9, "label": "Nokia N9" },
+      { "resolution": { "horizontal": 768, "vertical": 1280 }, "diagonal": 4.5, "label": "Lumia 920" }
     ]
+  },
+  {
+    "brand": "Oneplus",
+    "devices": [
+      { "resolution": { "horizontal": 1080, "vertical": 2280 }, "diagonal": 6.28, "label": "Oneplus 6" },
+      { "resolution": { "horizontal": 1440, "vertical": 3120 }, "diagonal": 6.67, "label": "Oneplus 7 Pro" }
+    ]
+  },
+  {
+    "brand": "Oppo",
+    "devices": [{ "resolution": { "horizontal": 1080, "vertical": 2120 }, "diagonal": 5.54, "label": "Oppo Find N2" }]
+  },
+  {
+    "brand": "Xiaomi",
+    "devices": [
+      { "resolution": { "horizontal": 1080, "vertical": 2040 }, "diagonal": 6.4, "label": "Mi Mix" },
+      { "resolution": { "horizontal": 1200, "vertical": 2670 }, "diagonal": 6.36, "label": "Xiaomi 14" }
+    ]
+  },
+  {
+    "brand": "HTC",
+    "devices": [{ "resolution": { "horizontal": 1080, "vertical": 1920 }, "diagonal": 4.7, "label": "HTC One" }]
+  },
+  {
+    "brand": "Google",
+    "devices": [
+      { "resolution": { "horizontal": 1200, "vertical": 1920 }, "diagonal": 7.02, "label": "Nexus 7" },
+      { "resolution": { "horizontal": 1080, "vertical": 2280 }, "diagonal": 5.7, "label": "Pixel 4" },
+      { "resolution": { "horizontal": 1440, "vertical": 3040 }, "diagonal": 6.3, "label": "Pixel 4 XL" }
+    ]
+  },
+  {
+    "brand": "Light",
+    "devices": [{ "resolution": { "horizontal": 1080, "vertical": 1240 }, "diagonal": 3.92, "label": "Light Phone 3" }]
   }
 ]
