@@ -1,5 +1,7 @@
 # PPI calculator
 
+[https://rescawen.github.io/ppi-calculator/](https://rescawen.github.io/ppi-calculator/)
+
 Below is default auto generated documentation which will get cleaned up. Run locally with:
 
 `npm install`
