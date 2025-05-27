@@ -2,5 +2,6 @@
   { "horizontalResolution": 1920, "verticalResolution": 1080, "screenSizes": [24.5, 25, 23.7] },
   { "horizontalResolution": 2560, "verticalResolution": 1440, "screenSizes": [27, 26.5, 16] },
   { "horizontalResolution": 2560, "verticalResolution": 1600, "screenSizes": [13.3, 16] },
-  { "horizontalResolution": 2560, "verticalResolution": 2880, "screenSizes": [27.6, 28] }
+  { "horizontalResolution": 2560, "verticalResolution": 2880, "screenSizes": [27.6, 28] },
+  { "horizontalResolution": 3024, "verticalResolution": 1964, "screenSizes": [14.2] }
 ]
