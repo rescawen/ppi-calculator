@@ -3,6 +3,7 @@ import { useQueryState } from "nuqs"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import { displayDataReducer, initialDisplayDataState } from "../src/reducers/displayDataReducer"
+import { borderClasses } from "../src/utils/utils"
 
 function App() {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)
@@ -68,6 +69,10 @@ function App() {
 
   return (
     <>
+      <div className="mx-2 mt-1">
+      <span className="font-bold">PPI Calculator </span>
+      <button className={`${borderClasses} px-1 bg-gray-200 cursor-pointer hover:text-gray-500`} onClick={() => {dispatch({ type: "SET_ALL", payload: { resolution: initialDisplayDataState.resolution, diagonal: initialDisplayDataState.diagonal } })}}>Reset</button>
+      </div>
       <Inputs displayData={displayData} dispatch={dispatch} isDefaultDisplayDataChanged={isDefaultDisplayDataChanged} />
       <ResolutionBlocks dispatch={dispatch} />
     </>
