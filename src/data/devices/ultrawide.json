@@ -1,11 +1,11 @@
 [
   {
-    "brand": "21:9",
+    "brand": "Ultrawide",
     "devices": [
-      { "resolution": { "horizontal": 2560, "vertical": 1080 }, "diagonal": 23.8, "label": "UWFHD" },
-      { "resolution": { "horizontal": 3440, "vertical": 1440 }, "diagonal": 23.8, "label": "UWQHD" },
-      { "resolution": { "horizontal": 3840, "vertical": 1600 }, "diagonal": 23.8, "label": "UW4K" },
-      { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 23.8, "label": "UW5K" }
+      { "resolution": { "horizontal": 2560, "vertical": 1080 }, "diagonal": 29, "label": "UWFHD" },
+      { "resolution": { "horizontal": 3440, "vertical": 1440 }, "diagonal": 34, "label": "UWQHD" },
+      { "resolution": { "horizontal": 3840, "vertical": 1600 }, "diagonal": 38, "label": "UW4K" },
+      { "resolution": { "horizontal": 5120, "vertical": 2160 }, "diagonal": 40, "label": "UW5K" }
     ]
   }
 ]

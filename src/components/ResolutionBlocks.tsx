@@ -21,7 +21,7 @@ import sixteenByNineDevices from "../data/devices/16:9.json"
 import threeByTwoDevices from "../data/devices/3:2.json"
 import fourByThreeDevices from "../data/devices/4:3.json"
 import sixteenByTenDevices from "../data/devices/16:10.json"
-import ultraWideDevices from "../data/devices/ultraWide.json"
+import ultraWideDevices from "../data/devices/ultrawide.json"
 
 type AnimatingItems = { [key: string]: boolean }
 
