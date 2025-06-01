@@ -1,6 +1,6 @@
 [
   {
-    "brand": "Acer ",
+    "brand": "Acer",
     "devices": [
       { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 23.8, "label": "CB241HYK" },
       { "resolution": { "horizontal": 5120, "vertical": 2880 }, "diagonal": 31.5, "label": "Predator XB323QX" }
