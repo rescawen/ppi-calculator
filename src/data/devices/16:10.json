@@ -1,0 +1,16 @@
+[
+  {
+    "brand": "16:10",
+    "devices": [
+      { "resolution": { "horizontal": 768, "vertical": 480 }, "diagonal": 23.8, "label": "" },
+      { "resolution": { "horizontal": 1280, "vertical": 800 }, "diagonal": 23.8, "label": "WXGA" },
+      { "resolution": { "horizontal": 1440, "vertical": 900 }, "diagonal": 23.8, "label": "WXGA+" },
+      { "resolution": { "horizontal": 1680, "vertical": 1050 }, "diagonal": 23.8, "label": "WSXGA+" },
+      { "resolution": { "horizontal": 1920, "vertical": 1200 }, "diagonal": 23.8, "label": "WUXGA" },
+      { "resolution": { "horizontal": 2560, "vertical": 1600 }, "diagonal": 23.8, "label": "WQXGA" },
+      { "resolution": { "horizontal": 2880, "vertical": 1800 }, "diagonal": 23.8, "label": "WQXGA+" },
+      { "resolution": { "horizontal": 3840, "vertical": 2400 }, "diagonal": 23.8, "label": "WQUXGA" },
+      { "resolution": { "horizontal": 4096, "vertical": 2560 }, "diagonal": 23.8, "label": "WQXGA+" }
+    ]
+  }
+]

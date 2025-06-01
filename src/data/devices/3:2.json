@@ -1,0 +1,13 @@
+[
+  {
+    "brand": "3:2",
+    "devices": [
+      { "resolution": { "horizontal": 240, "vertical": 160 }, "diagonal": 23.8, "label": "HQVGA" },
+      { "resolution": { "horizontal": 480, "vertical": 320 }, "diagonal": 23.8, "label": "HVGA" },
+      { "resolution": { "horizontal": 960, "vertical": 640 }, "diagonal": 23.8, "label": "DVGA" },
+      { "resolution": { "horizontal": 1920, "vertical": 1280 }, "diagonal": 23.8, "label": "WSVGA" },
+      { "resolution": { "horizontal": 3000, "vertical": 2000 }, "diagonal": 23.8, "label": "WVGA" },
+      { "resolution": { "horizontal": 3840, "vertical": 2560 }, "diagonal": 23.8, "label": "WQVGA" }
+    ]
+  }
+]

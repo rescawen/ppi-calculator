@@ -17,6 +17,11 @@ import microsoftDevices from "../data/devices/microsoft.json"
 import lenovoDevices from "../data/devices/lenovo.json"
 import huaweiDevices from "../data/devices/huawei.json"
 import miscDevices from "../data/devices/misc.json"
+import sixteenByNineDevices from "../data/devices/16:9.json"
+import threeByTwoDevices from "../data/devices/3:2.json"
+import fourByThreeDevices from "../data/devices/4:3.json"
+import sixteenByTenDevices from "../data/devices/16:10.json"
+import ultraWideDevices from "../data/devices/ultraWide.json"
 
 type AnimatingItems = { [key: string]: boolean }
 
@@ -78,6 +83,15 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
             <DevicesList deviceList={huaweiDevices} />
             <DevicesList deviceList={miscDevices} />
           </div>
+          <div className="col-span-1">
+            <DevicesList deviceList={sixteenByNineDevices} />
+            <DevicesList deviceList={sixteenByTenDevices} />
+          </div>
+          <div className="col-span-1">
+            <DevicesList deviceList={threeByTwoDevices} />
+            <DevicesList deviceList={fourByThreeDevices} />
+            <DevicesList deviceList={ultraWideDevices} />
+          </div>
         </div>
       )
     } else if (windowWidth >= 1024) {
@@ -101,16 +115,24 @@ function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
             <DevicesList deviceList={acerDevices} />
             <DevicesList deviceList={asusDevices} />
             <DevicesList deviceList={benqDevices} />
-          </div>
-          <div className="col-span-1">
             <DevicesList deviceList={lenovoDevices} />
             <DevicesList deviceList={huaweiDevices} />
-            <DevicesList deviceList={miscDevices} />
+          </div>
+          <div className="col-span-1">
+            {/* <DevicesList deviceList={lenovoDevices} />
+            <DevicesList deviceList={huaweiDevices} /> */}
+            {/* <DevicesList deviceList={miscDevices} /> */}
+            <DevicesList deviceList={sixteenByNineDevices} />
+            <DevicesList deviceList={threeByTwoDevices} />
+            <DevicesList deviceList={fourByThreeDevices} />
+            <DevicesList deviceList={sixteenByTenDevices} />
+            <DevicesList deviceList={ultraWideDevices} />
           </div>
         </div>
       )
     } else {
       // 2 columns for sm/md (40/48 rem, 640/768) screens
+      // TODO: implement carousel type of layout for mobile so that the user can scroll through columns of data
       return (
         <div className="grid grid-cols-2">
           <div className="col-span-1">

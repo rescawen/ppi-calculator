@@ -1,0 +1,22 @@
+[
+  {
+    "brand": "16:9",
+    "devices": [
+      { "resolution": { "horizontal": 640, "vertical": 360 }, "diagonal": 23.8, "label": "360p" },
+      { "resolution": { "horizontal": 854, "vertical": 480 }, "diagonal": 23.8, "label": "FWVGA" },
+      { "resolution": { "horizontal": 960, "vertical": 540 }, "diagonal": 23.8, "label": "qHD, 540p" },
+      { "resolution": { "horizontal": 1024, "vertical": 576 }, "diagonal": 23.8, "label": "WSVGA, 576p" },
+      { "resolution": { "horizontal": 1280, "vertical": 720 }, "diagonal": 23.8, "label": "HD, 720p" },
+      { "resolution": { "horizontal": 1366, "vertical": 768 }, "diagonal": 23.8, "label": "WXGA, 768p" },
+      { "resolution": { "horizontal": 1600, "vertical": 900 }, "diagonal": 23.8, "label": "HD+, 900p" },
+      { "resolution": { "horizontal": 1680, "vertical": 1050 }, "diagonal": 23.8, "label": "WSXGA+, 1050p" },
+      { "resolution": { "horizontal": 1920, "vertical": 1080 }, "diagonal": 23.8, "label": "FullHD, 1080p" },
+      { "resolution": { "horizontal": 2048, "vertical": 1152 }, "diagonal": 23.8, "label": "QWXGA, 1152p" },
+      { "resolution": { "horizontal": 2560, "vertical": 1440 }, "diagonal": 27, "label": "WQHD, 1440p" },
+      { "resolution": { "horizontal": 3840, "vertical": 2160 }, "diagonal": 32, "label": "4K, 2160p" },
+      { "resolution": { "horizontal": 4096, "vertical": 2304 }, "diagonal": 32, "label": "4K+, 2304p" },
+      { "resolution": { "horizontal": 5120, "vertical": 2880 }, "diagonal": 43, "label": "5K, 2880p" },
+      { "resolution": { "horizontal": 7680, "vertical": 4320 }, "diagonal": 43, "label": "8K, 4320p" }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "brand": "4:3",
+    "devices": [
+      { "resolution": { "horizontal": 160, "vertical": 120 }, "diagonal": 23.8, "label": "QQVGA" },
+      { "resolution": { "horizontal": 320, "vertical": 240 }, "diagonal": 23.8, "label": "QVGA" },
+      { "resolution": { "horizontal": 480, "vertical": 360 }, "diagonal": 23.8, "label": "qVGA" },
+      { "resolution": { "horizontal": 640, "vertical": 480 }, "diagonal": 23.8, "label": "VGA" },
+      { "resolution": { "horizontal": 800, "vertical": 600 }, "diagonal": 23.8, "label": "SVGA" },
+      { "resolution": { "horizontal": 1024, "vertical": 768 }, "diagonal": 23.8, "label": "XGA" },
+      { "resolution": { "horizontal": 1152, "vertical": 864 }, "diagonal": 23.8, "label": "XGA+" },
+      { "resolution": { "horizontal": 1280, "vertical": 960 }, "diagonal": 23.8, "label": "QuadVGA" },
+      { "resolution": { "horizontal": 1400, "vertical": 1050 }, "diagonal": 23.8, "label": "SXGA+" },
+      { "resolution": { "horizontal": 1600, "vertical": 1200 }, "diagonal": 23.8, "label": "UXGA" },
+      { "resolution": { "horizontal": 2048, "vertical": 1536 }, "diagonal": 23.8, "label": "QXGA" },
+      { "resolution": { "horizontal": 2800, "vertical": 2100 }, "diagonal": 23.8, "label": "QSXGA+" },
+      { "resolution": { "horizontal": 3200, "vertical": 2400 }, "diagonal": 23.8, "label": "QUXGA" }
+    ]
+  }
+]
