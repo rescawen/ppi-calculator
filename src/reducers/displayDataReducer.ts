@@ -6,6 +6,7 @@ export type DisplayDataState = {
   pixelPerInch: number
   aspectRatio: { main: string; portrait?: string }
   dimensions: { width: number; height: number }
+  label?: string // optional device label for history
 }
 
 // Define the type for the resolution object
@@ -170,13 +171,14 @@ export const initialDisplayDataState: DisplayDataState = {
   pixelPerInch: initialPixelPerInch,
   aspectRatio: calculateAspectRatio(initialResolution.horizontal, initialResolution.vertical),
   dimensions: calculateDimensions(initialResolution.horizontal, initialResolution.vertical, initialDiagonal),
+  label: "Your Display" // TODO: add button to push currently calculated to comparebox
 }
 
 // rename to something more descriptive?
 export type Action =
   | { type: "SET_RESOLUTION"; payload: DisplayDataState["resolution"] }
   | { type: "SET_DIAGONAL"; payload: DisplayDataState["diagonal"] }
-  | { type: "SET_ALL"; payload: { resolution: DisplayDataState["resolution"]; diagonal: DisplayDataState["diagonal"] } }
+  | { type: "SET_ALL"; payload: { resolution: DisplayDataState["resolution"]; diagonal: DisplayDataState["diagonal"]; label?: DisplayDataState["label"] } }
 
 export const displayDataReducer = (state: DisplayDataState, action: Action): DisplayDataState => {
   switch (action.type) {
@@ -214,6 +216,7 @@ export const displayDataReducer = (state: DisplayDataState, action: Action): Dis
           action.payload.resolution.vertical,
           action.payload.diagonal,
         ),
+        label: action.payload.label,
       }
     default:
       return state

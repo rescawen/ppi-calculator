@@ -21,7 +21,7 @@ export function DevicesList({ deviceList }: DevicesListProps) {
                   animatingItems[label] ? "animate-bg-fade-out" : ""
                 }`}
                 onClick={() => {
-                  dispatch({ type: "SET_ALL", payload: { resolution: { horizontal, vertical }, diagonal } })
+                  dispatch({ type: "SET_ALL", payload: { resolution: { horizontal, vertical }, diagonal, label } })
                   setAnimatingItems((prev) => ({ ...prev, [label]: true }))
                   setTimeout(() => {
                     setAnimatingItems((prev) => ({ ...prev, [label]: false }))

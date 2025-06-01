@@ -3,11 +3,15 @@ import { useQueryState } from "nuqs"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
-import { displayDataReducer, initialDisplayDataState } from "../src/reducers/displayDataReducer"
+import CompareBox from "./components/CompareBox"
+import { displayDataReducer, initialDisplayDataState, DisplayDataState } from "../src/reducers/displayDataReducer"
 
 function App() {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
+  const [compareHistory, setCompareHistory] = useState<DisplayDataState[]>([])
+
+  console.log(displayData)
 
   // URL state management with a single query parameter
   const [, setDisplayParams] = useQueryState("", {
@@ -65,12 +69,29 @@ function App() {
       displayData.diagonal !== initialDisplayDataState.diagonal
 
     setIsDefaultDisplayDataChanged(hasChanged)
+
+    // Add to compare history if it's a valid selection
+    if (hasChanged) {
+      setCompareHistory((prev) => {
+        const newHistory = [displayData, ...prev].slice(0, 4)
+        return newHistory
+      })
+    }
   }, [displayData])
 
   return (
     <>
-      <Header dispatch={dispatch} />
-      <Inputs displayData={displayData} dispatch={dispatch} isDefaultDisplayDataChanged={isDefaultDisplayDataChanged} />
+      <div className="flex">
+        <div>
+          <Header dispatch={dispatch} />
+          <Inputs
+            displayData={displayData}
+            dispatch={dispatch}
+            isDefaultDisplayDataChanged={isDefaultDisplayDataChanged}
+          />
+        </div>
+        <CompareBox compareHistory={compareHistory} />
+      </div>
       <ResolutionBlocks dispatch={dispatch} />
     </>
   )
