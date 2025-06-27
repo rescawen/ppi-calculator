@@ -141,10 +141,15 @@ const calculateDimensions = (
 }
 
 const calculateInitialValues = () => {
-  const devicePixelRatio = window.devicePixelRatio || 1
+  // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
+  // const devicePixelRatio = window.devicePixelRatio || 1
+
   const REFERENCE_PPI = 96
 
-  const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
+  // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
+  // const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
+
+  const initialResolution = { horizontal: screen.width, vertical: screen.height }
 
   const diagonalInches = Math.sqrt(
     (initialResolution.horizontal / REFERENCE_PPI) ** 2 + (initialResolution.vertical / REFERENCE_PPI) ** 2,
