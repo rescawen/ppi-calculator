@@ -144,7 +144,7 @@ const calculateDimensions = (
   return { width, height }
 }
 
-const createDisplayDataState = (horizontal: number, vertical: number, diagonal?: number): DisplayDataState => {
+export const createDisplayDataState = (horizontal: number, vertical: number, diagonal?: number): DisplayDataState => {
   // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
   // const devicePixelRatio = window.devicePixelRatio || 1
 
@@ -164,12 +164,6 @@ const createDisplayDataState = (horizontal: number, vertical: number, diagonal?:
     aspectRatio: calculateAspectRatio(horizontal, vertical),
     dimensions: calculateDimensions(horizontal, vertical, resolvedDiagonal),
   }
-}
-
-export const createDisplayDataStateForScreen = (screen: Pick<Screen, "width" | "height">): DisplayDataState => {
-  // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
-  // const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
-  return createDisplayDataState(screen.width, screen.height)
 }
 
 export const initialDisplayDataState: DisplayDataState = createDisplayDataState(1920, 1080)

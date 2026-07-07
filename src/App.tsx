@@ -4,77 +4,34 @@ import { useReducer, useEffect, useState } from "react"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
-import {
-  createDisplayDataStateForScreen,
-  displayDataReducer,
-  getEstimatedScreenSizes,
-  initialDisplayDataState,
-} from "./reducers/displayDataReducer"
+import { displayDataReducer, DisplayDataState, getEstimatedScreenSizes, initialDisplayDataState } from "./reducers/displayDataReducer"
+import { parseDisplayParams } from "./utils/displayParams"
 
-const displayParamsPattern = /horizontal=(\d+)\/vertical=(\d+)\/diagonal=([0-9.]+)/
-
-const getDisplayParamsFromUrl = () => {
-  const decodedSearch = decodeURIComponent(window.location.search)
-  const match = decodedSearch.match(displayParamsPattern)
-
-  if (!match) {
-    return null
-  }
-
-  const [, horizontal, vertical, diagonal] = match
-  const displayParams = {
-    horizontal: Number(horizontal),
-    vertical: Number(vertical),
-    diagonal: Number(diagonal),
-  }
-
-  return Object.values(displayParams).every(Number.isFinite) ? displayParams : null
-}
-
-const writeDisplayParamsToUrl = (displayData: typeof initialDisplayDataState) => {
+const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
   const params = `horizontal=${displayData.resolution.horizontal ?? 0}/vertical=${displayData.resolution.vertical ?? 0}/diagonal=${displayData.diagonal ?? 0}`
   window.history.replaceState(null, "", `?${params}`)
 }
 
-function Calculator() {
-  const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)
-  const [defaultDisplayData, setDefaultDisplayData] = useState(initialDisplayDataState)
+function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataState }) {
+  const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayData)
+  const [defaultDisplayData] = useState(initialDisplayData)
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
   const [isInitialized, setIsInitialized] = useState(false)
-  const [estimatedScreenSizes, setEstimatedScreenSizes] = useState<number[]>(
+  const [estimatedScreenSizes] = useState<number[]>(
     getEstimatedScreenSizes(
-      initialDisplayDataState.resolution.horizontal ?? 0,
-      initialDisplayDataState.resolution.vertical ?? 0,
+      initialDisplayData.resolution.horizontal ?? 0,
+      initialDisplayData.resolution.vertical ?? 0,
     ),
   )
 
   useEffect(() => {
-    const urlDisplayParams = getDisplayParamsFromUrl()
+    const urlDisplayParams = parseDisplayParams(window.location.search)
 
     if (urlDisplayParams) {
-      dispatch({
-        type: "SET_ALL",
-        payload: {
-          resolution: { horizontal: urlDisplayParams.horizontal, vertical: urlDisplayParams.vertical },
-          diagonal: urlDisplayParams.diagonal,
-        },
-      })
       setIsInitialized(true)
       return
     }
 
-    const browserDisplayData = createDisplayDataStateForScreen(window.screen)
-    setDefaultDisplayData(browserDisplayData)
-    setEstimatedScreenSizes(
-      getEstimatedScreenSizes(
-        browserDisplayData.resolution.horizontal ?? 0,
-        browserDisplayData.resolution.vertical ?? 0,
-      ),
-    )
-    dispatch({
-      type: "SET_ALL",
-      payload: { resolution: browserDisplayData.resolution, diagonal: browserDisplayData.diagonal },
-    })
     setIsInitialized(true)
   }, [])
 
@@ -107,8 +64,8 @@ function Calculator() {
   )
 }
 
-function App() {
-  return <Calculator />
+function App({ initialDisplayData = initialDisplayDataState }: { initialDisplayData?: DisplayDataState }) {
+  return <Calculator initialDisplayData={initialDisplayData} />
 }
 
 export default App
