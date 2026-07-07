@@ -20,6 +20,10 @@ const getScreenSize = (resolutions: Resolution[], horizontal: number, vertical: 
   return matchedResolution ? matchedResolution.screenSizes : []
 }
 
+export const getEstimatedScreenSizes = (horizontal: number, vertical: number): number[] => {
+  return getScreenSize(resolutions, horizontal, vertical)
+}
+
 export const roundToTwoDecimals = (value: number): number => parseFloat(value.toFixed(2))
 
 // calculate ppi/dpi based on resolution and screen size
@@ -140,42 +144,35 @@ const calculateDimensions = (
   return { width, height }
 }
 
-const calculateInitialValues = () => {
+const createDisplayDataState = (horizontal: number, vertical: number, diagonal?: number): DisplayDataState => {
   // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
   // const devicePixelRatio = window.devicePixelRatio || 1
 
   const REFERENCE_PPI = 96
-
-  // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
-  // const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
-
-  const initialResolution = { horizontal: screen.width, vertical: screen.height }
-
-  const diagonalInches = Math.sqrt(
-    (initialResolution.horizontal / REFERENCE_PPI) ** 2 + (initialResolution.vertical / REFERENCE_PPI) ** 2,
-  )
-  const estimatedScreenSizes = getScreenSize(resolutions, initialResolution.horizontal, initialResolution.vertical)
+  const resolution = { horizontal, vertical }
+  const diagonalInches = Math.sqrt((horizontal / REFERENCE_PPI) ** 2 + (vertical / REFERENCE_PPI) ** 2)
+  const estimatedScreenSizes = getEstimatedScreenSizes(horizontal, vertical)
   const estimatedScreenSize = estimatedScreenSizes[0]
 
-  const initialDiagonal = estimatedScreenSize || diagonalInches
-  const initialPixelPerInch = estimatedScreenSize
-    ? calculatePixelDensity(initialResolution.horizontal, initialResolution.vertical, estimatedScreenSize)
-    : REFERENCE_PPI
+  const resolvedDiagonal = diagonal ?? estimatedScreenSize ?? diagonalInches
+  const pixelPerInch = estimatedScreenSize && diagonal === undefined ? calculatePixelDensity(horizontal, vertical, estimatedScreenSize) : calculatePixelDensity(horizontal, vertical, resolvedDiagonal)
 
-  return { initialResolution, initialDiagonal, initialPixelPerInch, estimatedScreenSizes }
+  return {
+    resolution,
+    diagonal: resolvedDiagonal,
+    pixelPerInch,
+    aspectRatio: calculateAspectRatio(horizontal, vertical),
+    dimensions: calculateDimensions(horizontal, vertical, resolvedDiagonal),
+  }
 }
 
-const { initialResolution, initialDiagonal, initialPixelPerInch, estimatedScreenSizes } = calculateInitialValues()
-
-export { estimatedScreenSizes }
-
-export const initialDisplayDataState: DisplayDataState = {
-  resolution: initialResolution,
-  diagonal: initialDiagonal,
-  pixelPerInch: initialPixelPerInch,
-  aspectRatio: calculateAspectRatio(initialResolution.horizontal, initialResolution.vertical),
-  dimensions: calculateDimensions(initialResolution.horizontal, initialResolution.vertical, initialDiagonal),
+export const createDisplayDataStateForScreen = (screen: Pick<Screen, "width" | "height">): DisplayDataState => {
+  // Now (in Chrome 125+ and some others): These values represent the physical screen size in CSS pixels at 100% zoom, regardless of zoom level.
+  // const initialResolution = { horizontal: devicePixelRatio * screen.width, vertical: devicePixelRatio * screen.height }
+  return createDisplayDataState(screen.width, screen.height)
 }
+
+export const initialDisplayDataState: DisplayDataState = createDisplayDataState(1920, 1080)
 
 // rename to something more descriptive?
 export type Action =

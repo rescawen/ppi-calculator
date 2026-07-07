@@ -1,15 +1,17 @@
 import type { Dispatch, ChangeEvent } from "react"
 import { borderClasses, formatNumberWithThousandsSeparator } from "../utils/utils"
-import { DisplayDataState, Action, estimatedScreenSizes, roundToTwoDecimals } from "../reducers/displayDataReducer"
+import { DisplayDataState, Action, roundToTwoDecimals } from "../reducers/displayDataReducer"
 import { Tooltip } from "./Tooltip"
 
 function Inputs({
   displayData,
   dispatch,
+  estimatedScreenSizes,
   isDefaultDisplayDataChanged,
 }: {
   displayData: DisplayDataState
   dispatch: Dispatch<Action>
+  estimatedScreenSizes: number[]
   isDefaultDisplayDataChanged: boolean
 }) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>, dimension: "horizontal" | "vertical" | "diagonal") => {

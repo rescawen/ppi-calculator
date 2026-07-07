@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { borderClasses } from "../utils/utils"
 import { Dispatch } from "react"
-import { Action, initialDisplayDataState } from "../reducers/displayDataReducer"
+import { Action, DisplayDataState } from "../reducers/displayDataReducer"
 
 interface HeaderProps {
   dispatch: Dispatch<Action>
+  defaultDisplayData: DisplayDataState
 }
 
-export default function Header({ dispatch }: HeaderProps) {
+export default function Header({ dispatch, defaultDisplayData }: HeaderProps) {
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
 
   const buttonClasses = `${borderClasses} px-1 bg-gray-200 cursor-pointer hover:text-gray-500`
@@ -30,7 +31,7 @@ export default function Header({ dispatch }: HeaderProps) {
         onClick={() => {
           dispatch({
             type: "SET_ALL",
-            payload: { resolution: initialDisplayDataState.resolution, diagonal: initialDisplayDataState.diagonal },
+            payload: { resolution: defaultDisplayData.resolution, diagonal: defaultDisplayData.diagonal },
           })
         }}
       >

@@ -17,10 +17,10 @@ import microsoftDevices from "../data/devices/microsoft.json"
 import lenovoDevices from "../data/devices/lenovo.json"
 import huaweiDevices from "../data/devices/huawei.json"
 import miscDevices from "../data/devices/misc.json"
-import sixteenByNineDevices from "../data/devices/16:9.json"
-import threeByTwoDevices from "../data/devices/3:2.json"
-import fourByThreeDevices from "../data/devices/4:3.json"
-import sixteenByTenDevices from "../data/devices/16:10.json"
+import sixteenByNineDevices from "../data/devices/16-by-9.json"
+import threeByTwoDevices from "../data/devices/3-by-2.json"
+import fourByThreeDevices from "../data/devices/4-by-3.json"
+import sixteenByTenDevices from "../data/devices/16-by-10.json"
 import ultraWideDevices from "../data/devices/ultrawide.json"
 
 type AnimatingItems = { [key: string]: boolean }
@@ -39,9 +39,11 @@ export const DevicesListContext = createContext<DevicesListContextType>({
 
 function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
   const [animatingItems, setAnimatingItems] = useState<AnimatingItems>({})
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState<number>(1024)
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth)
+
     // Handle window resize
     const handleResize = () => setWindowWidth(window.innerWidth)
 

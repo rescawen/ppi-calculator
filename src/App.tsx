@@ -1,79 +1,114 @@
+"use client"
+
 import { useReducer, useEffect, useState } from "react"
-import { useQueryState } from "nuqs"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
-import { displayDataReducer, initialDisplayDataState } from "../src/reducers/displayDataReducer"
+import {
+  createDisplayDataStateForScreen,
+  displayDataReducer,
+  getEstimatedScreenSizes,
+  initialDisplayDataState,
+} from "./reducers/displayDataReducer"
 
-function App() {
+const displayParamsPattern = /horizontal=(\d+)\/vertical=(\d+)\/diagonal=([0-9.]+)/
+
+const getDisplayParamsFromUrl = () => {
+  const decodedSearch = decodeURIComponent(window.location.search)
+  const match = decodedSearch.match(displayParamsPattern)
+
+  if (!match) {
+    return null
+  }
+
+  const [, horizontal, vertical, diagonal] = match
+  const displayParams = {
+    horizontal: Number(horizontal),
+    vertical: Number(vertical),
+    diagonal: Number(diagonal),
+  }
+
+  return Object.values(displayParams).every(Number.isFinite) ? displayParams : null
+}
+
+const writeDisplayParamsToUrl = (displayData: typeof initialDisplayDataState) => {
+  const params = `horizontal=${displayData.resolution.horizontal ?? 0}/vertical=${displayData.resolution.vertical ?? 0}/diagonal=${displayData.diagonal ?? 0}`
+  window.history.replaceState(null, "", `?${params}`)
+}
+
+function Calculator() {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayDataState)
+  const [defaultDisplayData, setDefaultDisplayData] = useState(initialDisplayDataState)
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
+  const [isInitialized, setIsInitialized] = useState(false)
+  const [estimatedScreenSizes, setEstimatedScreenSizes] = useState<number[]>(
+    getEstimatedScreenSizes(
+      initialDisplayDataState.resolution.horizontal ?? 0,
+      initialDisplayDataState.resolution.vertical ?? 0,
+    ),
+  )
 
-  // URL state management with a single query parameter
-  const [, setDisplayParams] = useQueryState("", {
-    defaultValue: {
-      horizontal: initialDisplayDataState.resolution.horizontal ?? 0,
-      vertical: initialDisplayDataState.resolution.vertical ?? 0,
-      diagonal: initialDisplayDataState.diagonal ?? 0,
-    },
-    parse: (value) => {
-      // Check if we have all three parameters in the correct format
-      const parts = value.split("/")
-      if (
-        parts.length === 3 &&
-        parts[0].startsWith("horizontal=") &&
-        parts[1].startsWith("vertical=") &&
-        parts[2].startsWith("diagonal=")
-      ) {
-        // Check if each part has a valid number after =
-        const [horizontal, vertical, diagonal] = parts.map((param) => {
-          const [, val] = param.split("=")
-          const num = parseInt(val, 10)
-          return isNaN(num) ? null : num
-        })
+  useEffect(() => {
+    const urlDisplayParams = getDisplayParamsFromUrl()
 
-        // Only proceed if all values are valid numbers
-        if (horizontal !== null && vertical !== null && diagonal !== null) {
-          // On initial load, update internal state with URL values
-          dispatch({ type: "SET_ALL", payload: { resolution: { horizontal, vertical }, diagonal } })
-          return { horizontal, vertical, diagonal }
-        }
-      }
-      // Fallback to default if format doesn't match or numbers are invalid
-      return {
-        horizontal: initialDisplayDataState.resolution.horizontal ?? 0,
-        vertical: initialDisplayDataState.resolution.vertical ?? 0,
-        diagonal: initialDisplayDataState.diagonal ?? 0,
-      }
-    },
-    serialize: (value) => `horizontal=${value.horizontal}/vertical=${value.vertical}/diagonal=${value.diagonal}`,
-    history: "replace",
-  })
+    if (urlDisplayParams) {
+      dispatch({
+        type: "SET_ALL",
+        payload: {
+          resolution: { horizontal: urlDisplayParams.horizontal, vertical: urlDisplayParams.vertical },
+          diagonal: urlDisplayParams.diagonal,
+        },
+      })
+      setIsInitialized(true)
+      return
+    }
+
+    const browserDisplayData = createDisplayDataStateForScreen(window.screen)
+    setDefaultDisplayData(browserDisplayData)
+    setEstimatedScreenSizes(
+      getEstimatedScreenSizes(
+        browserDisplayData.resolution.horizontal ?? 0,
+        browserDisplayData.resolution.vertical ?? 0,
+      ),
+    )
+    dispatch({
+      type: "SET_ALL",
+      payload: { resolution: browserDisplayData.resolution, diagonal: browserDisplayData.diagonal },
+    })
+    setIsInitialized(true)
+  }, [])
 
   // Sync internal state to URL whenever displayData changes
   useEffect(() => {
-    setDisplayParams({
-      horizontal: displayData.resolution.horizontal ?? 0,
-      vertical: displayData.resolution.vertical ?? 0,
-      diagonal: displayData.diagonal ?? 0,
-    })
+    if (isInitialized) {
+      writeDisplayParamsToUrl(displayData)
+    }
 
     // Check if values have changed from initial state
     const hasChanged =
-      displayData.resolution.horizontal !== initialDisplayDataState.resolution.horizontal ||
-      displayData.resolution.vertical !== initialDisplayDataState.resolution.vertical ||
-      displayData.diagonal !== initialDisplayDataState.diagonal
+      displayData.resolution.horizontal !== defaultDisplayData.resolution.horizontal ||
+      displayData.resolution.vertical !== defaultDisplayData.resolution.vertical ||
+      displayData.diagonal !== defaultDisplayData.diagonal
 
     setIsDefaultDisplayDataChanged(hasChanged)
-  }, [displayData])
+  }, [defaultDisplayData, displayData, isInitialized])
 
   return (
     <>
-      <Header dispatch={dispatch} />
-      <Inputs displayData={displayData} dispatch={dispatch} isDefaultDisplayDataChanged={isDefaultDisplayDataChanged} />
+      <Header dispatch={dispatch} defaultDisplayData={defaultDisplayData} />
+      <Inputs
+        displayData={displayData}
+        dispatch={dispatch}
+        estimatedScreenSizes={estimatedScreenSizes}
+        isDefaultDisplayDataChanged={isDefaultDisplayDataChanged}
+      />
       <ResolutionBlocks dispatch={dispatch} />
     </>
   )
+}
+
+function App() {
+  return <Calculator />
 }
 
 export default App

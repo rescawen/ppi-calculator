@@ -1,59 +1,25 @@
-# PPI calculator
+# PPI Calculator
 
-[https://rescawen.github.io/ppi-calculator/](https://rescawen.github.io/ppi-calculator/)
+A RedwoodSDK app for calculating display pixel density, physical display dimensions, dot pitch, aspect ratio, and megapixels from resolution and diagonal size.
 
-Below is default auto generated documentation which will get cleaned up. Run locally with:
+The app also includes a clickable catalog of common devices and display presets.
 
-`npm install`
+## Local development
 
-`npm run dev`
-
-This is a modern version of [https://www.sven.de/dpi/](https://www.sven.de/dpi/)
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: { project: ["./tsconfig.node.json", "./tsconfig.app.json"], tsconfigRootDir: import.meta.dirname },
-  },
-})
+```sh
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Useful commands
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react"
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-})
+```sh
+npm run build
+npm run types
+npm run lint
+npm run check
 ```
+
+## Deployment
+
+This project uses RedwoodSDK on Cloudflare Workers. The Worker entrypoint is `src/worker.tsx`, and deploy/runtime configuration lives in `wrangler.jsonc`.
