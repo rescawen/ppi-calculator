@@ -18,12 +18,12 @@ export const Tooltip = ({ content, children }: TooltipProps) => {
         <TooltipTrigger asChild>
           <span className="relative">
             {children}
-            <span className="absolute -bottom-0 left-1 right-0 bg-transparent border-b border-dashed border-gray-400" />
+            <span className="absolute right-0 -bottom-0 left-1 border-b border-dashed border-gray-400 bg-transparent" />
           </span>
         </TooltipTrigger>
         {/** There is a bug with how z-index: auto, which is the default property of radix-ui.
          * When there are two tooltips on top of each other, the tooltip of the top one pops below on top of the trigger on the bottom. */}
-        <TooltipContent className="rounded bg-gray-900 px-2 py-1 text-sm font-normal text-white shadow-lg z-10">
+        <TooltipContent className="z-10 rounded bg-gray-900 px-2 py-1 text-sm font-normal text-white shadow-lg">
           {content}
           <TooltipArrow className="fill-current text-gray-900" />
         </TooltipContent>

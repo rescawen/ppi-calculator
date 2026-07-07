@@ -17,6 +17,9 @@ npm run dev
 npm run build
 npm run types
 npm run lint
+npm run lint:fix
+npm run format:check
+npm run format
 npm run check
 ```
 

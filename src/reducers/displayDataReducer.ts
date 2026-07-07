@@ -12,8 +12,8 @@ export type DisplayDataState = {
 type Resolution = { horizontalResolution: number; verticalResolution: number; screenSizes: number[] }
 
 // get the most likely screen size based on resolution
-const getScreenSize = (resolutions: Resolution[], horizontal: number, vertical: number): number[] => {
-  const matchedResolution = resolutions.find(
+const getScreenSize = (resolutionEstimates: Resolution[], horizontal: number, vertical: number): number[] => {
+  const matchedResolution = resolutionEstimates.find(
     (resolution: Resolution) =>
       resolution.horizontalResolution === horizontal && resolution.verticalResolution === vertical,
   )
@@ -155,7 +155,10 @@ export const createDisplayDataState = (horizontal: number, vertical: number, dia
   const estimatedScreenSize = estimatedScreenSizes[0]
 
   const resolvedDiagonal = diagonal ?? estimatedScreenSize ?? diagonalInches
-  const pixelPerInch = estimatedScreenSize && diagonal === undefined ? calculatePixelDensity(horizontal, vertical, estimatedScreenSize) : calculatePixelDensity(horizontal, vertical, resolvedDiagonal)
+  const pixelPerInch =
+    estimatedScreenSize && diagonal === undefined
+      ? calculatePixelDensity(horizontal, vertical, estimatedScreenSize)
+      : calculatePixelDensity(horizontal, vertical, resolvedDiagonal)
 
   return {
     resolution,

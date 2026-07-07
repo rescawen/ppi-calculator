@@ -39,17 +39,18 @@ function Inputs({
   }
 
   return (
-    <div className={`${borderClasses} grid md:grid-cols-3 md:w-3xl p-2 m-2`}>
+    <div className={`${borderClasses} m-2 grid p-2 md:w-3xl md:grid-cols-3`}>
       {/* <div data-testid="inputs" className="col-span-2 grid grid-cols-1 sm:grid-cols-3 w-full sm:max-w-md"> TODO: Check for w-full sm:max-w-md use cases? */}
       <div data-testid="inputs-container" className="col-span-2 grid grid-cols-1 sm:grid-cols-3">
         <div className="col-span-1">
-          <label>Horizontal resolution:</label>
+          <label htmlFor="horizontal-resolution-input">Horizontal resolution:</label>
         </div>
         <div className="col-span-2">
           <input
+            id="horizontal-resolution-input"
             type="number"
             min="0"
-            className="border-2 border-gray-300 rounded-md mr-2 text-right"
+            className="mr-2 rounded-md border-2 border-gray-300 text-right"
             value={displayData.resolution.horizontal ?? ""}
             onChange={(e) => handleChange(e, "horizontal")}
             data-testid="horizontal-resolution-input"
@@ -57,13 +58,14 @@ function Inputs({
           <span>pixels</span>
         </div>
         <div className="col-span-1">
-          <label>Vertical resolution:</label>
+          <label htmlFor="vertical-resolution-input">Vertical resolution:</label>
         </div>
         <div className="col-span-2">
           <input
+            id="vertical-resolution-input"
             type="number"
             min="0"
-            className="border-2 border-gray-300 rounded-md mr-2 text-right"
+            className="mr-2 rounded-md border-2 border-gray-300 text-right"
             value={displayData.resolution.vertical ?? ""}
             onChange={(e) => handleChange(e, "vertical")}
             data-testid="vertical-resolution-input"
@@ -72,14 +74,15 @@ function Inputs({
         </div>
 
         <div className="col-span-1">
-          <label>Diagonal:</label>
+          <label htmlFor="diagonal-input">Diagonal:</label>
         </div>
         <div className="col-span-2">
           <input
+            id="diagonal-input"
             type="number"
             min="0"
             step="0.1"
-            className="border-2 border-gray-300 rounded-md mr-2 text-right"
+            className="mr-2 rounded-md border-2 border-gray-300 text-right"
             value={displayData.diagonal ?? ""}
             onChange={(e) => handleChange(e, "diagonal")}
             data-testid="diagonal-input"
@@ -88,7 +91,7 @@ function Inputs({
         </div>
       </div>
 
-      <div className="col-span-1 grid mt-7 sm:mt-0" data-testid="calculation-info">
+      <div className="col-span-1 mt-7 grid sm:mt-0" data-testid="calculation-info">
         <div className="text-center sm:text-left" data-testid="megapixels">
           Megapixels:
           <Tooltip
@@ -118,15 +121,16 @@ function Inputs({
               <>
                 Is your screen size{" "}
                 {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
-                  <span key={index}>
-                    <span
+                  <span key={alternateScreenSize}>
+                    <button
+                      type="button"
                       onClick={() => {
                         dispatch({ type: "SET_DIAGONAL", payload: alternateScreenSize })
                       }}
-                      className="text-blue-600 cursor-pointer underline"
+                      className="cursor-pointer border-0 bg-transparent p-0 text-blue-600 underline"
                     >
                       {alternateScreenSize}
-                    </span>
+                    </button>
                     {index < estimatedScreenSizes.length - 2 ? ", " : ""}
                   </span>
                 ))}
@@ -138,7 +142,7 @@ function Inputs({
         </div>
       </div>
       <div className="col-span-3 mt-1.5 font-semibold" data-testid="calculation-results">
-        <span className="font-normal block sm:inline">Display size: </span>
+        <span className="block font-normal sm:inline">Display size: </span>
         <Tooltip
           content={`${roundToTwoDecimals(displayData.dimensions.width)}" x ${roundToTwoDecimals(displayData.dimensions.height)}" = ${roundToTwoDecimals(displayData.dimensions.width * displayData.dimensions.height)}in²`}
         >
@@ -158,7 +162,7 @@ function Inputs({
             {displayData.pixelPerInch !== 0 ? <span>{(25.4 / displayData.pixelPerInch).toFixed(4)}mm </span> : "∞mm "}
           </span>
           <a
-            className="font-medium text-blue-600 cursor-pointer underline hover:text-purple-700"
+            className="cursor-pointer font-medium text-blue-600 underline hover:text-purple-700"
             href="https://en.wikipedia.org/wiki/Dot_pitch"
           >
             dot pitch

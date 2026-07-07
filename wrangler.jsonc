@@ -5,10 +5,10 @@
   "compatibility_date": "2025-08-21",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
-  "vars": {}
+  "vars": {},
 }

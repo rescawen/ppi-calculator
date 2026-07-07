@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "semi": false,
+  "sortPackageJson": true,
+  "sortTailwindcss": true,
+  "ignorePatterns": ["dist", "node_modules", ".wrangler", ".redwood", "package-lock.json"]
+}

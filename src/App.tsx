@@ -4,7 +4,12 @@ import { useReducer, useEffect, useState } from "react"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
-import { displayDataReducer, DisplayDataState, getEstimatedScreenSizes, initialDisplayDataState } from "./reducers/displayDataReducer"
+import {
+  displayDataReducer,
+  DisplayDataState,
+  getEstimatedScreenSizes,
+  initialDisplayDataState,
+} from "./reducers/displayDataReducer"
 import { parseDisplayParams } from "./utils/displayParams"
 
 const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
@@ -18,10 +23,7 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
   const [isInitialized, setIsInitialized] = useState(false)
   const [estimatedScreenSizes] = useState<number[]>(
-    getEstimatedScreenSizes(
-      initialDisplayData.resolution.horizontal ?? 0,
-      initialDisplayData.resolution.vertical ?? 0,
-    ),
+    getEstimatedScreenSizes(initialDisplayData.resolution.horizontal ?? 0, initialDisplayData.resolution.vertical ?? 0),
   )
 
   useEffect(() => {

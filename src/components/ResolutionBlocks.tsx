@@ -1,4 +1,4 @@
-import { useState, Dispatch, createContext, SetStateAction } from "react"
+import { useMemo, useState, Dispatch, createContext, SetStateAction } from "react"
 import { Action } from "../reducers/displayDataReducer"
 import { DevicesList } from "../components/DevicesList"
 
@@ -39,9 +39,13 @@ export const DevicesListContext = createContext<DevicesListContextType>({
 
 function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
   const [animatingItems, setAnimatingItems] = useState<AnimatingItems>({})
+  const contextValue = useMemo(
+    () => ({ dispatch, animatingItems, setAnimatingItems }),
+    [dispatch, animatingItems, setAnimatingItems],
+  )
 
   return (
-    <DevicesListContext.Provider value={{ dispatch, animatingItems, setAnimatingItems }}>
+    <DevicesListContext.Provider value={contextValue}>
       <div className="grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-7">
         <div className="col-span-1">
           <DevicesList deviceList={appleDevices} />
