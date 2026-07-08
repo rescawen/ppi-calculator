@@ -32,7 +32,11 @@ export default function CompareBox({ compareHistory }: CompareBoxProps) {
           <col className="w-28" />
           {compareSlots.map((item, index) => (
             <col
-              key={item ? `${item.resolution.horizontal}x${item.resolution.vertical}-${item.diagonal}-${item.label}` : index}
+              key={
+                item
+                  ? `${item.resolution.horizontal}x${item.resolution.vertical}-${item.diagonal}-${item.label}`
+                  : index
+              }
             />
           ))}
         </colgroup>
@@ -43,7 +47,11 @@ export default function CompareBox({ compareHistory }: CompareBoxProps) {
             </th>
             {compareSlots.map((item, index) => (
               <th
-                key={item ? `${item.resolution.horizontal}x${item.resolution.vertical}-${item.diagonal}-${item.label}` : index}
+                key={
+                  item
+                    ? `${item.resolution.horizontal}x${item.resolution.vertical}-${item.diagonal}-${item.label}`
+                    : index
+                }
                 className="truncate border border-gray-300 px-2 py-1 font-semibold"
                 title={item?.label}
               >
