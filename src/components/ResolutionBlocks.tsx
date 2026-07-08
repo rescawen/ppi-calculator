@@ -1,5 +1,6 @@
 import { useMemo, useState, Dispatch, createContext, SetStateAction } from "react"
 import { Action } from "../reducers/displayDataReducer"
+import { type CompareHistoryItem } from "./CompareBox"
 import { DevicesList } from "../components/DevicesList"
 
 import appleDevices from "../data/devices/apple.json"
@@ -29,19 +30,27 @@ type DevicesListContextType = {
   dispatch: Dispatch<Action>
   animatingItems: AnimatingItems
   setAnimatingItems: Dispatch<SetStateAction<AnimatingItems>>
+  onCompareSelection: (item: CompareHistoryItem) => void
 }
 
 export const DevicesListContext = createContext<DevicesListContextType>({
   dispatch: () => {}, // Provide a no-op function or a real dispatch function if available, TODO: investigate this
   animatingItems: {},
   setAnimatingItems: () => {}, // Provide a no-op function, TODO: investigate this
+  onCompareSelection: () => {},
 })
 
-function ResolutionBlocks({ dispatch }: { dispatch: Dispatch<Action> }) {
+function ResolutionBlocks({
+  dispatch,
+  onCompareSelection,
+}: {
+  dispatch: Dispatch<Action>
+  onCompareSelection: (item: CompareHistoryItem) => void
+}) {
   const [animatingItems, setAnimatingItems] = useState<AnimatingItems>({})
   const contextValue = useMemo(
-    () => ({ dispatch, animatingItems, setAnimatingItems }),
-    [dispatch, animatingItems, setAnimatingItems],
+    () => ({ dispatch, animatingItems, setAnimatingItems, onCompareSelection }),
+    [dispatch, animatingItems, setAnimatingItems, onCompareSelection],
   )
 
   return (

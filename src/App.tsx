@@ -1,9 +1,10 @@
 "use client"
 
-import { useReducer, useEffect, useState } from "react"
+import { useCallback, useEffect, useReducer, useState } from "react"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
+import CompareBox, { type CompareHistoryItem } from "./components/CompareBox"
 import {
   displayDataReducer,
   DisplayDataState,
@@ -22,9 +23,23 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
   const [defaultDisplayData] = useState(initialDisplayData)
   const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
   const [isInitialized, setIsInitialized] = useState(false)
+  const [compareHistory, setCompareHistory] = useState<CompareHistoryItem[]>([])
   const [estimatedScreenSizes] = useState<number[]>(
     getEstimatedScreenSizes(initialDisplayData.resolution.horizontal ?? 0, initialDisplayData.resolution.vertical ?? 0),
   )
+
+  const handleCompareSelection = useCallback((item: CompareHistoryItem) => {
+    setCompareHistory((previousHistory) => {
+      const itemKey = `${item.resolution.horizontal}x${item.resolution.vertical}-${item.diagonal}-${item.label}`
+      const dedupedHistory = previousHistory.filter(
+        (historyItem) =>
+          `${historyItem.resolution.horizontal}x${historyItem.resolution.vertical}-${historyItem.diagonal}-${historyItem.label}` !==
+          itemKey,
+      )
+
+      return [item, ...dedupedHistory].slice(0, 4)
+    })
+  }, [])
 
   useEffect(() => {
     const urlDisplayParams = parseDisplayParams(window.location.search)
@@ -54,14 +69,19 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
 
   return (
     <>
-      <Header dispatch={dispatch} defaultDisplayData={defaultDisplayData} />
-      <Inputs
-        displayData={displayData}
-        dispatch={dispatch}
-        estimatedScreenSizes={estimatedScreenSizes}
-        isDefaultDisplayDataChanged={isDefaultDisplayDataChanged}
-      />
-      <ResolutionBlocks dispatch={dispatch} />
+      <div className="flex flex-wrap items-start justify-between gap-6 xl:flex-nowrap">
+        <div>
+          <Header dispatch={dispatch} defaultDisplayData={defaultDisplayData} />
+          <Inputs
+            displayData={displayData}
+            dispatch={dispatch}
+            estimatedScreenSizes={estimatedScreenSizes}
+            isDefaultDisplayDataChanged={isDefaultDisplayDataChanged}
+          />
+        </div>
+        <CompareBox compareHistory={compareHistory} />
+      </div>
+      <ResolutionBlocks dispatch={dispatch} onCompareSelection={handleCompareSelection} />
     </>
   )
 }

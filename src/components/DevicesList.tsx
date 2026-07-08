@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { DevicesListContext } from "../components/ResolutionBlocks"
+import { createDisplayDataState } from "../reducers/displayDataReducer"
 import { borderClasses } from "../utils/utils"
 
 type Device = { resolution: { horizontal: number; vertical: number }; diagonal: number; label: string }
@@ -7,7 +8,7 @@ type DevicesGroup = { brand: string; devices: Device[] }
 type DevicesListProps = { deviceList: DevicesGroup[] }
 
 export function DevicesList({ deviceList }: DevicesListProps) {
-  const { dispatch, animatingItems, setAnimatingItems } = useContext(DevicesListContext)
+  const { dispatch, animatingItems, setAnimatingItems, onCompareSelection } = useContext(DevicesListContext)
 
   return (
     <>
@@ -26,6 +27,7 @@ export function DevicesList({ deviceList }: DevicesListProps) {
                   }`}
                   onClick={() => {
                     dispatch({ type: "SET_ALL", payload: { resolution: { horizontal, vertical }, diagonal } })
+                    onCompareSelection({ ...createDisplayDataState(horizontal, vertical, diagonal), label })
                     setAnimatingItems((prev) => ({ ...prev, [itemKey]: true }))
                     setTimeout(() => {
                       setAnimatingItems((prev) => ({ ...prev, [itemKey]: false }))
