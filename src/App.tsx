@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useReducer, useState } from "react"
+import { useCallback, useEffect, useReducer, useRef, useState } from "react"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
@@ -11,7 +11,6 @@ import {
   getEstimatedScreenSizes,
   initialDisplayDataState,
 } from "./reducers/displayDataReducer"
-import { parseDisplayParams } from "./utils/displayParams"
 
 const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
   const params = `horizontal=${displayData.resolution.horizontal ?? 0}/vertical=${displayData.resolution.vertical ?? 0}/diagonal=${displayData.diagonal ?? 0}`
@@ -20,9 +19,7 @@ const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
 
 function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataState }) {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayData)
-  const [defaultDisplayData] = useState(initialDisplayData)
-  const [isDefaultDisplayDataChanged, setIsDefaultDisplayDataChanged] = useState<boolean>(false)
-  const [isInitialized, setIsInitialized] = useState(false)
+  const defaultDisplayData = initialDisplayData
   const [compareHistory, setCompareHistory] = useState<CompareHistoryItem[]>([])
   const [estimatedScreenSizes] = useState<number[]>(
     getEstimatedScreenSizes(initialDisplayData.resolution.horizontal ?? 0, initialDisplayData.resolution.vertical ?? 0),
@@ -41,31 +38,21 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
     })
   }, [])
 
-  useEffect(() => {
-    const urlDisplayParams = parseDisplayParams(window.location.search)
+  const isMountedRef = useRef(false)
 
-    if (urlDisplayParams) {
-      setIsInitialized(true)
-      return
-    }
-
-    setIsInitialized(true)
-  }, [])
+  const isDefaultDisplayDataChanged =
+    displayData.resolution.horizontal !== defaultDisplayData.resolution.horizontal ||
+    displayData.resolution.vertical !== defaultDisplayData.resolution.vertical ||
+    displayData.diagonal !== defaultDisplayData.diagonal
 
   // Sync internal state to URL whenever displayData changes
   useEffect(() => {
-    if (isInitialized) {
+    if (isMountedRef.current) {
       writeDisplayParamsToUrl(displayData)
+    } else {
+      isMountedRef.current = true
     }
-
-    // Check if values have changed from initial state
-    const hasChanged =
-      displayData.resolution.horizontal !== defaultDisplayData.resolution.horizontal ||
-      displayData.resolution.vertical !== defaultDisplayData.resolution.vertical ||
-      displayData.diagonal !== defaultDisplayData.diagonal
-
-    setIsDefaultDisplayDataChanged(hasChanged)
-  }, [defaultDisplayData, displayData, isInitialized])
+  }, [displayData])
 
   return (
     <>
