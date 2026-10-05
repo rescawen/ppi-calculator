@@ -7,12 +7,10 @@ function Inputs({
   displayData,
   dispatch,
   estimatedScreenSizes,
-  isDefaultDisplayDataChanged,
 }: {
   displayData: DisplayDataState
   dispatch: Dispatch<Action>
   estimatedScreenSizes: number[]
-  isDefaultDisplayDataChanged: boolean
 }) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>, dimension: "horizontal" | "vertical" | "diagonal") => {
     const value = e.target.value // This is always a string
@@ -116,11 +114,12 @@ function Inputs({
           )}
         </div>
         <div className="min-h-6 text-center sm:text-left" data-testid="screen-size-suggestion">
-          {!isDefaultDisplayDataChanged &&
-            (estimatedScreenSizes.length > 1 ? (
-              <>
-                Is your screen size{" "}
-                {estimatedScreenSizes.slice(1).map((alternateScreenSize, index) => (
+          {estimatedScreenSizes.filter((size) => size !== displayData.diagonal).length > 0 ? (
+            <>
+              Is your screen size{" "}
+              {estimatedScreenSizes
+                .filter((size) => size !== displayData.diagonal)
+                .map((alternateScreenSize, index, arr) => (
                   <span key={alternateScreenSize}>
                     <button
                       type="button"
@@ -131,14 +130,14 @@ function Inputs({
                     >
                       {alternateScreenSize}
                     </button>
-                    {index < estimatedScreenSizes.length - 2 ? ", " : ""}
+                    {index < arr.length - 1 ? ", " : ""}
                   </span>
                 ))}
-                ?
-              </>
-            ) : (
-              <>Your resolution is unique.</>
-            ))}
+              ?
+            </>
+          ) : (
+            <>Your resolution is unique.</>
+          )}
         </div>
       </div>
       <div className="col-span-3 mt-1.5 font-semibold" data-testid="calculation-results">

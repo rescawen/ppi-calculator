@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useReducer, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react"
 import Inputs from "./components/Inputs"
 import ResolutionBlocks from "./components/ResolutionBlocks"
 import Header from "./components/Header"
@@ -21,8 +21,13 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayData)
   const defaultDisplayData = initialDisplayData
   const [compareHistory, setCompareHistory] = useState<CompareHistoryItem[]>([])
-  const [estimatedScreenSizes] = useState<number[]>(
-    getEstimatedScreenSizes(initialDisplayData.resolution.horizontal ?? 0, initialDisplayData.resolution.vertical ?? 0),
+  const estimatedScreenSizes = useMemo(
+    () =>
+      getEstimatedScreenSizes(
+        displayData.resolution.horizontal ?? 0,
+        displayData.resolution.vertical ?? 0,
+      ),
+    [displayData.resolution.horizontal, displayData.resolution.vertical],
   )
 
   const handleCompareSelection = useCallback((item: CompareHistoryItem) => {
@@ -39,11 +44,6 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
   }, [])
 
   const isMountedRef = useRef(false)
-
-  const isDefaultDisplayDataChanged =
-    displayData.resolution.horizontal !== defaultDisplayData.resolution.horizontal ||
-    displayData.resolution.vertical !== defaultDisplayData.resolution.vertical ||
-    displayData.diagonal !== defaultDisplayData.diagonal
 
   // Sync internal state to URL whenever displayData changes
   useEffect(() => {
@@ -63,7 +63,6 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
             displayData={displayData}
             dispatch={dispatch}
             estimatedScreenSizes={estimatedScreenSizes}
-            isDefaultDisplayDataChanged={isDefaultDisplayDataChanged}
           />
         </div>
         <CompareBox compareHistory={compareHistory} />

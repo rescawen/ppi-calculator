@@ -9,21 +9,7 @@ import {
   type CatalogGroup,
 } from "../components/DevicesList"
 
-import appleDevices from "../data/devices/apple.json"
-import gameConsoleDevices from "../data/devices/gameConsole.json"
-import razerDevices from "../data/devices/razer.json"
-import sonyDevices from "../data/devices/sony.json"
-import mobileDevices from "../data/devices/mobile.json"
-import dellDevices from "../data/devices/dell.json"
-import samsungDevices from "../data/devices/samsung.json"
-import lgDevices from "../data/devices/lg.json"
-import acerDevices from "../data/devices/acer.json"
-import asusDevices from "../data/devices/asus.json"
-import benqDevices from "../data/devices/benq.json"
-import microsoftDevices from "../data/devices/microsoft.json"
-import lenovoDevices from "../data/devices/lenovo.json"
-import huaweiDevices from "../data/devices/huawei.json"
-import miscDevices from "../data/devices/misc.json"
+import { brandGroups } from "../data/brandGroups"
 import sixteenByNineDevices from "../data/devices/16-by-9.json"
 import threeByTwoDevices from "../data/devices/3-by-2.json"
 import fourByThreeDevices from "../data/devices/4-by-3.json"
@@ -45,24 +31,6 @@ export const DevicesListContext = createContext<DevicesListContextType>({
   setAnimatingItems: () => {}, // Provide a no-op function, TODO: investigate this
   onCompareSelection: () => {},
 })
-
-const brandGroups: CatalogGroup[] = [
-  ...appleDevices,
-  ...gameConsoleDevices,
-  ...razerDevices,
-  ...sonyDevices,
-  ...mobileDevices,
-  ...dellDevices,
-  ...microsoftDevices,
-  ...samsungDevices,
-  ...lgDevices,
-  ...acerDevices,
-  ...asusDevices,
-  ...benqDevices,
-  ...lenovoDevices,
-  ...huaweiDevices,
-  ...miscDevices,
-]
 
 const aspectRatioGroups: CatalogGroup[] = [
   ...sixteenByNineDevices,

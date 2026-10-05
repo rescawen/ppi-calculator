@@ -1,4 +1,6 @@
-import resolutions from "../data/resolutionScreenSizeEstimates.json"
+import { getEstimatedScreenSizes } from "../utils/catalog"
+
+export { getEstimatedScreenSizes }
 
 export type DisplayDataState = {
   resolution: { horizontal: number | null; vertical: number | null }
@@ -6,22 +8,6 @@ export type DisplayDataState = {
   pixelPerInch: number
   aspectRatio: { main: string; portrait?: string }
   dimensions: { width: number; height: number }
-}
-
-// Define the type for the resolution object
-type Resolution = { horizontalResolution: number; verticalResolution: number; screenSizes: number[] }
-
-// get the most likely screen size based on resolution
-const getScreenSize = (resolutionEstimates: Resolution[], horizontal: number, vertical: number): number[] => {
-  const matchedResolution = resolutionEstimates.find(
-    (resolution: Resolution) =>
-      resolution.horizontalResolution === horizontal && resolution.verticalResolution === vertical,
-  )
-  return matchedResolution ? matchedResolution.screenSizes : []
-}
-
-export const getEstimatedScreenSizes = (horizontal: number, vertical: number): number[] => {
-  return getScreenSize(resolutions, horizontal, vertical)
 }
 
 export const roundToTwoDecimals = (value: number): number => parseFloat(value.toFixed(2))

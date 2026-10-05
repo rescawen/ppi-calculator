@@ -2,6 +2,7 @@ import { useState } from "react"
 import { borderClasses } from "../utils/utils"
 import { Dispatch } from "react"
 import { Action, DisplayDataState } from "../reducers/displayDataReducer"
+import { detectCurrentDisplay } from "../utils/displayDetector"
 
 interface HeaderProps {
   dispatch: Dispatch<Action>
@@ -10,8 +11,27 @@ interface HeaderProps {
 
 export default function Header({ dispatch, defaultDisplayData }: HeaderProps) {
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
+  const [isDetecting, setIsDetecting] = useState<boolean>(false)
 
   const buttonClasses = `${borderClasses} px-1 bg-gray-200 cursor-pointer hover:text-gray-500`
+
+  const handleDetectScreen = async () => {
+    setIsDetecting(true)
+    try {
+      const detected = await detectCurrentDisplay({ requestPermission: true })
+      if (detected) {
+        dispatch({
+          type: "SET_ALL",
+          payload: {
+            resolution: { horizontal: detected.horizontal, vertical: detected.vertical },
+            diagonal: detected.diagonal,
+          },
+        })
+      }
+    } finally {
+      setIsDetecting(false)
+    }
+  }
 
   const copyToClipboard = async () => {
     try {
@@ -26,6 +46,13 @@ export default function Header({ dispatch, defaultDisplayData }: HeaderProps) {
   return (
     <div className="mx-2 mt-1 flex items-center gap-1">
       <span className="font-bold">PPI Calculator</span>
+      <button
+        className={buttonClasses}
+        onClick={handleDetectScreen}
+        title="Detect current display resolution and size"
+      >
+        {isDetecting ? "Detecting..." : "Detect Screen"}
+      </button>
       <button
         className={buttonClasses}
         onClick={() => {
