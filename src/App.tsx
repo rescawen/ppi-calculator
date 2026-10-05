@@ -12,6 +12,8 @@ import {
   initialDisplayDataState,
 } from "./reducers/displayDataReducer"
 
+import { detectCurrentDisplay } from "./utils/displayDetector"
+
 const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
   const params = `horizontal=${displayData.resolution.horizontal ?? 0}/vertical=${displayData.resolution.vertical ?? 0}/diagonal=${displayData.diagonal ?? 0}`
   window.history.replaceState(null, "", `?${params}`)
@@ -19,7 +21,7 @@ const writeDisplayParamsToUrl = (displayData: DisplayDataState) => {
 
 function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataState }) {
   const [displayData, dispatch] = useReducer(displayDataReducer, initialDisplayData)
-  const defaultDisplayData = initialDisplayData
+  const [defaultDisplayData, setDefaultDisplayData] = useState<DisplayDataState>(initialDisplayData)
   const [compareHistory, setCompareHistory] = useState<CompareHistoryItem[]>([])
   const estimatedScreenSizes = useMemo(
     () =>
@@ -29,6 +31,28 @@ function Calculator({ initialDisplayData }: { initialDisplayData: DisplayDataSta
       ),
     [displayData.resolution.horizontal, displayData.resolution.vertical],
   )
+
+  // Auto-detect current display on mount if no URL parameters were provided
+  useEffect(() => {
+    const hasUrlParams = typeof window !== "undefined" && Boolean(window.location.search)
+    if (!hasUrlParams) {
+      detectCurrentDisplay({ requestPermission: false }).then((detected) => {
+        if (detected) {
+          const newDisplayState = {
+            resolution: { horizontal: detected.horizontal, vertical: detected.vertical },
+            diagonal: detected.diagonal,
+          }
+          dispatch({
+            type: "SET_ALL",
+            payload: newDisplayState,
+          })
+          setDefaultDisplayData(
+            displayDataReducer(initialDisplayData, { type: "SET_ALL", payload: newDisplayState }),
+          )
+        }
+      })
+    }
+  }, [initialDisplayData])
 
   const handleCompareSelection = useCallback((item: CompareHistoryItem) => {
     setCompareHistory((previousHistory) => {

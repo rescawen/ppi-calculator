@@ -99,6 +99,69 @@ function resolveNormalizedResolution(
   return { horizontal: rawH || w, vertical: rawV || h }
 }
 
+export type WindowManagementPermissionState = PermissionState | "unsupported"
+
+/**
+ * Checks the current permission state for the Window Management API.
+ * Returns 'granted', 'prompt', 'denied', or 'unsupported'.
+ */
+export async function getWindowManagementPermissionState(): Promise<WindowManagementPermissionState> {
+  if (typeof window === "undefined" || !("getScreenDetails" in window)) {
+    return "unsupported"
+  }
+  if (typeof navigator !== "undefined" && "permissions" in navigator) {
+    try {
+      const status = await navigator.permissions.query({
+        name: "window-management" as PermissionName,
+      })
+      return status.state
+    } catch {
+      try {
+        const fallbackStatus = await navigator.permissions.query({
+          name: "window-placement" as PermissionName,
+        })
+        return fallbackStatus.state
+      } catch {
+        return "unsupported"
+      }
+    }
+  }
+  return "unsupported"
+}
+
+/**
+ * Subscribes to changes in the Window Management permission state (e.g. when toggled in browser settings).
+ */
+export async function subscribeToPermissionChange(
+  callback: (state: WindowManagementPermissionState) => void,
+): Promise<(() => void) | null> {
+  if (typeof window === "undefined" || !("getScreenDetails" in window)) {
+    return null
+  }
+  if (typeof navigator !== "undefined" && "permissions" in navigator) {
+    try {
+      const status = await navigator.permissions.query({
+        name: "window-management" as PermissionName,
+      })
+      const listener = () => callback(status.state)
+      status.addEventListener("change", listener)
+      return () => status.removeEventListener("change", listener)
+    } catch {
+      try {
+        const fallbackStatus = await navigator.permissions.query({
+          name: "window-placement" as PermissionName,
+        })
+        const listener = () => callback(fallbackStatus.state)
+        fallbackStatus.addEventListener("change", listener)
+        return () => fallbackStatus.removeEventListener("change", listener)
+      } catch {
+        return null
+      }
+    }
+  }
+  return null
+}
+
 /**
  * Detects the user's current display configuration.
  */
@@ -115,15 +178,34 @@ export async function detectCurrentDisplay(options?: {
   let height = window.screen.height
   const dpr = window.devicePixelRatio || 1
 
-  // 1. Try Window Management API (Chrome, Edge 100+)
-  if ("getScreenDetails" in window && options?.requestPermission !== false) {
+  let canQueryScreenDetails = Boolean(options?.requestPermission)
+
+  // In passive/silent mode, check if permission was already granted previously so we can read details without prompting
+  if (!canQueryScreenDetails && typeof navigator !== "undefined" && "permissions" in navigator) {
     try {
-      // Race getScreenDetails with a timeout so a pending or ignored permission prompt does not hang
+      const status = await navigator.permissions.query({
+        name: "window-management" as PermissionName,
+      })
+      if (status.state === "granted") {
+        canQueryScreenDetails = true
+      }
+    } catch {
+      // Permission query unsupported, continue with standard screen properties
+    }
+  }
+
+  // 1. Try Window Management API (Chrome, Edge 100+)
+  if ("getScreenDetails" in window && canQueryScreenDetails) {
+    try {
+      // Race getScreenDetails with a timeout. If the user is prompted to grant permission,
+      // allow ample time (25s) for the prompt interaction, while keeping a short timeout (1.2s)
+      // for silent background queries.
       // @ts-expect-error Window Management API
       const screenDetailsPromise = window.getScreenDetails()
+      const timeoutMs = options?.requestPermission ? 25000 : 1200
       const screenDetails = await Promise.race([
         screenDetailsPromise,
-        new Promise<null>((resolve) => setTimeout(() => resolve(null), 1200)),
+        new Promise<null>((resolve) => setTimeout(() => resolve(null), timeoutMs)),
       ])
       if (screenDetails && typeof screenDetails === "object" && "currentScreen" in screenDetails) {
         const current = screenDetails.currentScreen
@@ -199,7 +281,22 @@ export async function detectCurrentDisplay(options?: {
     }
   }
 
-  // 4. Check Device Catalog for known estimates
+  // 4. Handle 3840x2160 LG UltraFine 4K (24MD4KL) identification via screenLabel
+  if (horizontal === 3840 && vertical === 2160) {
+    if (screenLabel && /(?:LG.*UltraFine|UltraFine|24MD4KL|LG.*24)/i.test(screenLabel)) {
+      return {
+        horizontal: 3840,
+        vertical: 2160,
+        diagonal: 23.7,
+        deviceLabel: "LG 24MD4KL (UltraFine 4K 23.7″)",
+        isInternal: false,
+        screenLabel,
+        confidence: "confirmed_external",
+      }
+    }
+  }
+
+  // 5. Check Device Catalog for known estimates
   const estimates = getEstimatedScreenSizes(horizontal, vertical)
   if (estimates.length > 0) {
     return {
