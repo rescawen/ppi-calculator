@@ -7,20 +7,20 @@ The app also includes a clickable catalog of common devices and display presets.
 ## Local development
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Useful commands
 
 ```sh
-npm run build
-npm run types
-npm run lint
-npm run lint:fix
-npm run format:check
-npm run format
-npm run check
+pnpm build
+pnpm types
+pnpm lint
+pnpm lint:fix
+pnpm format:check
+pnpm format
+pnpm check
 ```
 
 ## Deployment

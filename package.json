@@ -13,10 +13,10 @@
     "format:check": "oxfmt --check",
     "preview": "vite preview",
     "worker:run": "rw-scripts worker-run",
-    "clean": "npm run clean:vite",
+    "clean": "pnpm run clean:vite",
     "clean:vite": "rm -rf ./node_modules/.vite",
     "generate": "rw-scripts ensure-env && wrangler types --include-runtime false",
-    "check": "npm run generate && npm run types",
+    "check": "pnpm run generate && pnpm run types",
     "types": "tsc"
   },
   "dependencies": {
@@ -40,12 +40,5 @@
     "typescript": "7.0.2",
     "vite": "~8.3.2",
     "wrangler": "4.147.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "workerd"
-    ]
   }
 }
